@@ -1,0 +1,91 @@
+@charset "utf-8";
+
+.section-employment {
+}
+.section-employment h1 {
+  margin-bottom: 16px;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+}
+.section.gray {
+  background: #f5f5f5;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.section p {
+  max-width: 720px;
+  margin: 0 auto 16px;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.btn.outline {
+  background: transparent;
+  color: #000;
+  border: 1px solid #000;
+}
+
+/* APPLY */
+.apply_links {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.apply_links a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* FOOTER */
+footer {
+  padding: 60px 20px;
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.footer_links {
+  margin: 20px 0;
+}
+
+.footer_links a {
+  color: #aaa;
+  margin: 0 8px;
+  text-decoration: none;
+}
+
+.copy {
+  margin-top: 20px;
+  font-size: 0.75rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .section h2 {
+    font-size: 1.6rem;
+  }
+}
