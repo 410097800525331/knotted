@@ -7,30 +7,30 @@ $(document).ready(function () {
       <nav class="gnb gnb-left">
         <ul>
           <li class="gnb-menu">
-            <a href="#">Brand</a>
+            <a href="/knottedstore/story.html">Brand</a>
             <ul class="sub-menu">
-              <li><a href="#">스토리</a></li>
+              <li><a href="/knottedstore/story.html">스토리</a></li>
             </ul>
           </li>
           <li class="gnb-menu">
-            <a href="#">Online Shop</a>
+            <a href="/knottedstore/shop.html">Online Shop</a>
             <ul class="sub-menu">
-              <li><a href="#">푸드</a></li>
-              <li><a href="#">리빙</a></li>
+              <li><a href="/knottedstore/shop.html">푸드</a></li>
+              <li><a href="/knottedstore/shop.html">리빙</a></li>
             </ul>
           </li>
           <li class="gnb-menu">
-            <a href="#">Reservation</a>
+            <a href="/knottedstore/pickup.html">Reservation</a>
             <ul class="sub-menu">
-              <li><a href="#">픽업 예약</a></li>
-              <li><a href="#">대량 주문</a></li>
-              <li><a href="#">매장 안내</a></li>
+              <li><a href="/knottedstore/pickup.html">픽업 예약</a></li>
+              <li><a href="/knottedstore/bulk-order.html">대량 주문</a></li>
+              <li><a href="/knottedstore/location.html">매장 안내</a></li>
             </ul>
           </li>
           <li class="gnb-menu">
-            <a href="#">Menu</a>
+            <a href="/knottedstore/menu.html">Menu</a>
             <ul class="sub-menu">
-              <li><a href="#">메뉴 소개</a></li>
+              <li><a href="/knottedstore/menu.html">메뉴 소개</a></li>
             </ul>
           </li>
         </ul>
@@ -41,24 +41,24 @@ $(document).ready(function () {
       <nav class="gnb gnb-right">
         <ul>
           <li class="gnb-menu">
-            <a href="#">Event</a>
+            <a href="/knottedstore/event.html">Event</a>
             <ul class="sub-menu">
-              <li><a href="#">이벤트</a></li>
-              <li><a href="#">공지사항</a></li>
+              <li><a href="/knottedstore/event.html">이벤트</a></li>
+              <li><a href="/knottedstore/notice.html">공지사항</a></li>
             </ul>
           </li>
           <li class="gnb-menu">
-            <a href="#">Help</a>
+            <a href="/knottedstore/faq.html">Help</a>
             <ul class="sub-menu">
-              <li><a href="#">자주 묻는 질문</a></li>
-              <li><a href="#">1:1 문의</a></li>
+              <li><a href="/knottedstore/faq.html">자주 묻는 질문</a></li>
+              <li><a href="/knottedstore/faq.html">1:1 문의</a></li>
             </ul>
           </li>
           <li class="gnb-menu">
-            <a href="#">Contact</a>
+            <a href="/knottedstore/In-Bound.html">Contact</a>
             <ul class="sub-menu">
-              <li><a href="#">제안하기</a></li>
-              <li><a href="#">채용안내</a></li>
+              <li><a href="/knottedstore/In-Bound.html">제안하기</a></li>
+              <li><a href="/knottedstore/employment.html">채용안내</a></li>
             </ul>
           </li>
           <li class="gnb-menu user-menu">
@@ -147,7 +147,7 @@ $(document).ready(function () {
 
   // footer
   const footer = `
-    <div class="tms-footer-bg1" data-aos="fade-up" data-aos-duration="1000">
+    <div class="tms-footer-bg1">
       <div class="footer-info">
         <div class="company-info">
           <h4>COMPANY INFOMATION</h4>
