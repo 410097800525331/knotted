@@ -1,165 +1,209 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <title>Vanity Slider</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>.slide_banner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+  <style>
+    .login_btn {
+      padding: 10px 20px;
+      border-radius: 20px;
+      background: #ff9fb3;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
 
-.slide_view {
-  overflow: hidden;
-  border-radius: 24px;
-  background: #dcd5c6;
-}
+    /* 팝업 배경 */
+    .popup_wrap {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
 
-.slide_list {
-  display: flex;
-  transition: transform 0.6s ease;
-}
+    /* 팝업 박스 */
+    .popup_box {
+      width: 360px;
+      background: #fffaf6;
+      border-radius: 24px;
+      padding: 32px 28px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
 
-.slide_item {
-  position: relative;
-  min-width: 100%;
-  padding: 60px 80px;
-  box-sizing: border-box;
-}
+    .popup_close {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
 
-.slide_item img {
-  width: 65%;
-  border-radius: 20px;
-  display: block;
-}
+    .popup_title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #ff7a9e;
+      margin-bottom: 24px;
+    }
 
-.slide_text {
-  position: absolute;
-  right: 80px;
-  bottom: 80px;
-  text-align: right;
-}
+    .login_form input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      border-radius: 14px;
+      border: 1px solid #ffd6df;
+      font-size: 1.4rem;
+    }
 
-.slide_text strong {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #222;
-}
+    .keep_login {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+      color: #666;
+    }
 
-.slide_text .smile {
-  display: block;
-  font-size: 2rem;
-  margin-top: 12px;
-}
+    .btn_main {
+      width: 100%;
+      padding: 12px;
+      border-radius: 20px;
+      border: none;
+      background: linear-gradient(135deg, #ff9fb3, #ffb347);
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-.slide_dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-}
+    .popup_links {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 1.3rem;
+    }
 
-.slide_dots button {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0.5;
-  border: none;
-  cursor: pointer;
-}
+    .popup_links a {
+      color: #ff7a9e;
+      text-decoration: none;
+    }
 
-.slide_dots button.on {
-  opacity: 1;
-}
+    .popup_links span {
+      margin: 0 6px;
+      color: #ccc;
+    }
 
-/* tablet */
-@media (max-width: 768px) {
-  .slide_item {
-    padding: 40px;
-  }
+    /* 안내 문구 */
+    .guest_notice {
+      margin: 18px 0 12px;
+      font-size: 1.2rem;
+      color: #999;
+      text-align: center;
+      line-height: 1.5;
+    }
 
-  .slide_item img {
-    width: 100%;
-  }
-
-  .slide_text {
-    right: 40px;
-    bottom: 40px;
-  }
-
-  .slide_text strong {
-    font-size: 2.8rem;
-  }
-}
-
-/* mobile */
-@media (max-width: 576px) {
-  .slide_text strong {
-    font-size: 2.2rem;
-  }
-}
-</style>
+    .btn_sub {
+      width: 100%;
+      padding: 10px;
+      border-radius: 16px;
+      border: 1px solid #ff9fb3;
+      background: #fff;
+      color: #ff7a9e;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body><div class="slide_banner">
-  <div class="slide_view">
-    <ul class="slide_list">
-      <li class="slide_item">
-        <img src="cake_01.jpg" alt="cake">
-        <div class="slide_text">
-          <strong>Cake</strong>
-          <span class="smile">☺</span>
-        </div>
-      </li>
-      <li class="slide_item">
-        <img src="cake_01.jpg" alt="cake">
-        <div class="slide_text">
-          <strong>Cake</strong>
-          <span class="smile">☺</span>
-        </div>
-      </li>
-      <li class="slide_item">
-        <img src="cake_01.jpg" alt="cake">
-        <div class="slide_text">
-          <strong>Cake</strong>
-          <span class="smile">☺</span>
-        </div>
-      </li>
-    </ul>
+
+<body>
+  <!-- 로그인 버튼 -->
+  <button id="header-member" class="login_btn">LOGIN</button>
+
+  <!-- 로그인 팝업 -->
+  <div class="popup_wrap" id="member-popup">
+    <div class="popup_box">
+      <button class="popup_close" id="header-member_close">✕</button>
+
+      <h2 class="popup_title">LOGIN</h2>
+
+      <form class="login_form">
+        <input type="text" placeholder="아이디">
+        <input type="password" placeholder="비밀번호">
+
+        <label class="keep_login">
+          <input type="checkbox">
+          <span>로그인 상태 유지</span>
+        </label>
+
+        <button type="submit" class="btn_main">로그인</button>
+      </form>
+
+      <div class="popup_links">
+        <a href="#">회원가입</a>
+        <span>|</span>
+        <a href="#">아이디 · 비밀번호 찾기</a>
+      </div>
+
+      <!-- ✅ 안내 문구 위치 -->
+      <p class="guest_notice">
+        비회원 주문 시에는 적립금 혜택이 적용되지 않으며<br>
+        사후 적립은 불가합니다.
+      </p>
+
+      <button class="btn_sub" id="guest_open">
+        비회원 주문배송조회
+      </button>
+    </div>
   </div>
 
-  <div class="slide_dots">
-    <button class="on"></button>
-    <button></button>
-    <button></button>
+  <!-- 비회원 주문조회 팝업 -->
+  <div class="popup-wrap" id="guest-popup">
+    <div class="popup_box">
+      <button class="popup_close" id="header-guest-close">✕</button>
+
+      <h2 class="popup_title">비회원 주문조회</h2>
+
+      <form class="login_form">
+        <input type="text" placeholder="주문번호">
+        <input type="text" placeholder="연락처 (숫자만 입력)">
+        <button type="submit" class="btn_main">조회하기</button>
+      </form>
+    </div>
   </div>
-</div>
-<script>
-const slide_list = document.querySelector('.slide_list');
-const dots = document.querySelectorAll('.slide_dots button');
-let index = 0;
-const total = dots.length;
 
-function move_slide(i) {
-  slide_list.style.transform = `translateX(-${i * 100}%)`;
-  dots.forEach(dot => dot.classList.remove('on'));
-  dots[i].classList.add('on');
-}
+  <script>
+    const memberPopup = document.getElementById('member-popup');
+    const guestPopup = document.getElementById('guest-popup');
 
-setInterval(() => {
-  index = (index + 1) % total;
-  move_slide(index);
-}, 3500);
+    document.getElementById('header-member').onclick = () => {
+      memberPopup.style.display = 'flex';
+    };
+    document.getElementById('header-member_close').onclick = () => {
+      memberPopup.style.display = 'none';
+    };
 
-dots.forEach((dot, i) => {
-  dot.addEventListener('click', () => {
-    index = i;
-    move_slide(index);
-  });
-});
-</script>
+    document.getElementById('header-guest').onclick = () => {
+      memberPopup.style.display = 'none';
+      guestPopup.style.display = 'flex';
+    };
+    document.getElementById('header-guest-close').onclick = () => {
+      guestPopup.style.display = 'none';
+    };
+
+    document.querySelectorAll('.popup-wrap').forEach(popup => {
+      popup.addEventListener('click', e => {
+        if (e.target === popup) popup.style.display = 'none';
+      });
+    });
+  </script>
 
 
-<script src="js/slider.js"></script>
+
+  <script src="js/slider.js"></script>
 </body>
+
 </html>

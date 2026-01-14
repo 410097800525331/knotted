@@ -7,16 +7,16 @@
 }
 
 :root {
-  --mc: #EE9DC2;
-  --sc: #FFF0A0;
-  --mb: #fdfaf7;
-  --mt: #3c3c3c;
-  --st: #acacac;
+  --raspberry-0: #FECDD3;
+  --raspberry-50: #EE9DC2;
+  --mango-0: #fdfaf7;
+  --mango-50: #FFF0A0;
+  --slate-50: #acacac;
+  --slate-100: #3c3c3c;
 }
 body {
   font: 16px/1.8 'NanumSquareRound', sans-serif;
-  color: var(--mt);
-  background-color: var(--mb);
+  color: var(--slate-100);
 }
 h1 {
   font-size: 2.5rem;
@@ -59,7 +59,7 @@ ol, ul {
 }
 a {
   text-decoration: none;
-  color: var(--mt);
+  color: var(--slate-100);
 }
 img {
   width: 100%;
@@ -73,6 +73,8 @@ button {
   cursor: pointer;
 }
 input {
+	margin: 0;
+	padding: 0;
   background: transparent;
   border: none;
   outline: none;
