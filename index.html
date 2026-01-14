@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노티드</title>
+  <link rel="icon" href="8c5d3a6a2f1e2.png">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/knotted.css">
+</head>
+
+<body>
+  <div id="tms-header"></div>
+  <section class="section tms-section-first">
+    <div class="slide-banner">
+      <div class="slide-view">
+        <ul class="slide-list">
+          <li class="slide-item">
+            <img src="/assets/images/bg-side1.png" alt="cake">
+            <div class="slide_text">
+              <strong>Cake</strong>
+              <span class="smile">☺</span>
+            </div>
+          </li>
+          <li class="slide-item">
+            <img src="/assets/images/bg-side2.jpg" alt="cake">
+            <div class="slide_text">
+              <strong>Cake</strong>
+              <span class="smile">☺</span>
+            </div>
+          </li>
+          <li class="slide-item">
+            <img src="/assets/images/bg-side3.jpg" alt="cake">
+            <div class="slide_text">
+              <strong>Cake</strong>
+              <span class="smile">☺</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="slide_dots">
+        <button class="on"></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
+
+  </section>
+  <script>
+    const slide_list = document.querySelector('.slide_list');
+    const dots = document.querySelectorAll('.slide_dots button');
+    let index = 0;
+    const total = dots.length;
+
+    function move_slide(i) {
+      slide_list.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('on'));
+      dots[i].classList.add('on');
+    }
+
+    setInterval(() => {
+      index = (index + 1) % total;
+      move_slide(index);
+    }, 3500);
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        index = i;
+        move_slide(index);
+      });
+    });
+  </script>
+  <div id="tms-footer"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/common.js"></script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+</body>
+
+</html>

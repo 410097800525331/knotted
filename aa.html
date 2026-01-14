@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vanity Slider</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>.slide_banner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.slide_view {
+  overflow: hidden;
+  border-radius: 24px;
+  background: #dcd5c6;
+}
+
+.slide_list {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.slide_item {
+  position: relative;
+  min-width: 100%;
+  padding: 60px 80px;
+  box-sizing: border-box;
+}
+
+.slide_item img {
+  width: 65%;
+  border-radius: 20px;
+  display: block;
+}
+
+.slide_text {
+  position: absolute;
+  right: 80px;
+  bottom: 80px;
+  text-align: right;
+}
+
+.slide_text strong {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.slide_text .smile {
+  display: block;
+  font-size: 2rem;
+  margin-top: 12px;
+}
+
+.slide_dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.slide_dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.5;
+  border: none;
+  cursor: pointer;
+}
+
+.slide_dots button.on {
+  opacity: 1;
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  .slide_item {
+    padding: 40px;
+  }
+
+  .slide_item img {
+    width: 100%;
+  }
+
+  .slide_text {
+    right: 40px;
+    bottom: 40px;
+  }
+
+  .slide_text strong {
+    font-size: 2.8rem;
+  }
+}
+
+/* mobile */
+@media (max-width: 576px) {
+  .slide_text strong {
+    font-size: 2.2rem;
+  }
+}
+</style>
+</head>
+<body><div class="slide_banner">
+  <div class="slide_view">
+    <ul class="slide_list">
+      <li class="slide_item">
+        <img src="cake_01.jpg" alt="cake">
+        <div class="slide_text">
+          <strong>Cake</strong>
+          <span class="smile">☺</span>
+        </div>
+      </li>
+      <li class="slide_item">
+        <img src="cake_01.jpg" alt="cake">
+        <div class="slide_text">
+          <strong>Cake</strong>
+          <span class="smile">☺</span>
+        </div>
+      </li>
+      <li class="slide_item">
+        <img src="cake_01.jpg" alt="cake">
+        <div class="slide_text">
+          <strong>Cake</strong>
+          <span class="smile">☺</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide_dots">
+    <button class="on"></button>
+    <button></button>
+    <button></button>
+  </div>
+</div>
+<script>
+const slide_list = document.querySelector('.slide_list');
+const dots = document.querySelectorAll('.slide_dots button');
+let index = 0;
+const total = dots.length;
+
+function move_slide(i) {
+  slide_list.style.transform = `translateX(-${i * 100}%)`;
+  dots.forEach(dot => dot.classList.remove('on'));
+  dots[i].classList.add('on');
+}
+
+setInterval(() => {
+  index = (index + 1) % total;
+  move_slide(index);
+}, 3500);
+
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    index = i;
+    move_slide(index);
+  });
+});
+</script>
+
+
+<script src="js/slider.js"></script>
+</body>
+</html>
