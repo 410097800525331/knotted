@@ -38,8 +38,8 @@ h3 {
 .highlight {
   display: inline;
   background-image: linear-gradient(transparent 60%, var(--mango-50) 60%);
+  margin-bottom: 40px;
 }
-
 
 /* reset */
 * {

@@ -28,8 +28,8 @@
   <script src="/js/common.js"></script>
 </head>
 
-
 <body>
+  <!-- https://www.behance.net/gallery/241291629/cvetochnaja-franshiza-odnostranichnyj-sajt?tracking_source=search_projects|site+web+design&l=9 -->
   <div id="tms-header"></div>
   <section class="section tms-section-first">
     <!-- Swiper -->
@@ -46,9 +46,7 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
-
   </section>
-  <!-- Initialize Swiper -->
   <script>
     var swiper = new Swiper(".mySwiper", {
       centeredSlides: true,
@@ -62,8 +60,116 @@
         prevEl: ".swiper-button-prev",
       },
     });
-
   </script>
+
+  <div class="ticker_wrap">
+    <div class="ticker_track">
+      <div class="ticker_inner">
+        <span>Premium Cake, Donut, and Dessert Cafe</span>
+        <b>knotted</b>
+        <span>☺</span>
+        <span>Premium Cake, Donut, and Dessert Cafe</span>
+        <b>knotted</b>
+        <span>☺</span>
+        <span>Premium Cake, Donut, and Dessert Cafe</span>
+        <b>knotted</b>
+        <span>☺</span>
+        <span>Premium Cake, Donut, and Dessert Cafe</span>
+        <b>knotted</b>
+        <span>☺</span>
+      </div>
+      <div class="ticker_inner">
+        <span>Premium Cake, Donut, and Dessert Cafe</span>
+        <b>knotted</b>
+        <span>☺</span>
+        <span>Premium Cake, Donut, and Dessert Cafe</span>
+        <b>knotted</b>
+        <span>☺</span>
+        <span>Premium Cake, Donut, and Dessert Cafe</span>
+        <b>knotted</b>
+        <span>☺</span>
+        <span>Premium Cake, Donut, and Dessert Cafe</span>
+        <b>knotted</b>
+        <span>☺</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- value_section -->
+  <div class="page value_section">
+    <div class="value_inner">
+      <div class="value_overlay">
+        <div class="value_text">
+          <h3 data-aos="fade-up" data-aos-delay="200">챔피언을 <span>선택하세요</span></h3>
+          <p data-aos="fade-up" data-aos-delay="400">적진으로 돌격하거나 팀원을 보조하는 등, 소환사의 협곡에는 다양한 역할군이 있습니다.</p>
+          <a class="btn_w" href="#">더 많은 챔피언 알아보기</a>
+          <a class="btn_w" href="#">지금 플레이하기</a>
+        </div>
+      </div>
+      <ul class="value_list">
+        <li class="value_item active" data-bg="assets/img/Akali_0.jpg"
+          data-char="assets/img/befd42ad6d2564159a441d08cfc3bf511532eb74-1628x1628.webp">
+          <img src="assets/img/e1511d4d93a84b836844c77b4ff96b1cf65f4f8d-220x220.webp" alt="암살자 icon">
+          <p>암살자</p>
+        </li>
+        <li class="value_item" data-bg="assets/img/Yasuo_0.jpg"
+          data-char="assets/img/70c26e49de8a2c79ac3de144772d2debd195edff-1628x1628.avif">
+          <img src="assets/img/651b0a4388dffbb709588546d7d73fd1a4e5b45d-220x220.webp" alt="전사 icon">
+          <p>전사</p>
+        </li>
+        <li class="value_item" data-bg="assets/img/Lux_0.jpg "
+          data-char="assets/img/ff6c8c57411e5c7e0551b02334fccedc78866143-1628x1628.avif">
+          <img src="assets/img/9872a60add3d215d217eda67e08a07ef7191ab89-220x220.avif" alt="마법사 icon">
+          <p>마법사</p>
+        </li>
+        <li class="value_item" data-bg="assets/img/Jinx_0.jpg"
+          data-char="assets/img/f136500bd46f823d37515a72b867425d3a0b3e54-1628x1628.png">
+          <img src="assets/img/fce8a3c7b1267ce428530fa845dd3f970772d5cd-220x220.avif" alt="원거리 딜러 icon">
+          <p>원거리 딜러</p>
+        </li>
+        <li class="value_item" data-bg="assets/img/Thresh_0.jpg"
+          data-char="assets/img/dbdded937cd214bb2a1189697a9e4f49f8c04505-1628x1628.avif">
+          <img src="assets/img/1824a47af762aeac9d88d3bae5a4eb2ece928f0d-220x220.avif" alt="서포터 icon">
+          <p>서포터</p>
+        </li>
+        <li class="value_item" data-bg="assets/img/Leona_0.jpg"
+          data-char="assets/img/95daf6dd2b28f03d5ba2ea1fabbabc3bc3ff6e6e-1628x1628.avif">
+          <img src="assets/img/019898f21e749a5f6f71b609714d87f3fe084df5-220x220.avif" alt="탱커 icon">
+          <p>탱커</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    const items = document.querySelectorAll('.value_item');
+    const valueInner = document.querySelector('.value_inner');
+    const charImgEl = document.querySelector('.char');
+
+    /* 초기 배경 */
+    const activeItem = document.querySelector('.value_item.active');
+    valueInner.style.backgroundImage = `url(${activeItem.dataset.bg})`;
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        /* 배경 변경 */
+        valueInner.style.backgroundImage = `url(${item.dataset.bg})`;
+
+        /* 캐릭터 이미지 변경 */
+        if (item.dataset.char) {
+          charImgEl.classList.remove('show');
+          setTimeout(() => {
+            charImgEl.src = item.dataset.char;
+            charImgEl.classList.add('show');
+          }, 150);
+        }
+      });
+    });
+  </script>
+
   <div id="tms-footer"></div>
 </body>
 

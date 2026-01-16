@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // header
   const header = `
-    <div class="header-bg"></div>
+  <div class="header-bg"></div>
     <div class="header-inner">
       <!-- LEFT MENU -->
       <nav class="gnb gnb-left">
@@ -167,9 +167,6 @@ $(document).ready(function () {
           <a href="#">| 개인정보처리방침</a>
           <a href="#">Copyright © 2023 Knotted. All Rights Reserved</a>
         </div>
-      </div>
-      <div class="tms-footer-bg2">
-        <img src="/assets/images/tms-footer-bg2.png" alt="tms-footer-bg2">
       </div>
     </div>
   `;

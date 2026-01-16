@@ -1,17 +1,11 @@
 @charset "utf-8";
 
-.highlight {
-  margin-bottom: 24px;
-}
-.section-employment h1 {
-  margin-bottom: 16px;
-}
-.section-employment h1 {
-  margin-bottom: 16px;
-}
 .employment {
-  padding: 80px 20px;
+  padding: 120px 20px;
   margin: 0 auto;
+}
+.employment-introduction p {
+  margin: 8px 0 24px;
 }
 .employment-introduction h4 {
   margin: 24px 0 16px;
@@ -19,84 +13,28 @@
 .recruit {
   background: var(--mango-0);
 }
-
+.employment-bg {
+  background: url(/assets/images/section-first-bg1.png) no-repeat center / cover fixed;
+}
 .brand {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px 24px;
+  max-width: 1200px;
+  margin: 32px auto 0;
 }
-
 .brand_card {
-  background: #fff;
-  border-radius: 14px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0,0,0,0.06);
   cursor: pointer;
   transition: transform 0.2s ease;
 }
-
 .brand_card:hover {
   transform: translateY(-4px);
 }
-
-.brand_visual {
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.brand_visual img {
-  max-width: 70%;
-  max-height: 60%;
-  object-fit: contain;
-}
-
 .brand_info {
   padding: 14px 16px;
   font-size: 0.9rem;
-  color: #333;
-}
-
-/* 컬러 테마 */
-.yellow { background: #fff4a3; }
-.green  { background: #bfd6a8; }
-.red    { background: #ef4b23; }
-.blue   { background: #8fa8a8; }
-.pink   { background: #f7d9e3; }
-.white  { background: #ffffff; }
-
-/* 반응형 */
-@media (max-width: 768px) {
-  .brand_grid {_
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 28px;
-  background: var(--raspberry-50);
-  color: #fff;
-}
-
-.btn.outline {
-  background: transparent;
-  color: #000;
-  border: 1px solid #000;
-}
-
-/* APPLY */
-.apply_links {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.apply_links a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 500;
+  border-top: 1px dashed var(--slate-50);
 }
