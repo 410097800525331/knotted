@@ -96,47 +96,244 @@
   </div>
 
 
+
+  <section class="section tms-section-third">
+    <div class="menu_recommend_inner">
+      <div class="menu_recommend_text">
+        <h1>Best Donut</h1>
+        <p>노티드가 엄선한 가장 HOT한 도넛!</p>
+        <ul class="menu_recommend_list">
+          <li class="is_active">얼그레이 도넛</li>
+          <li>레몬 슈가 도넛</li>
+          <li>저당 크림 도넛</li>
+          <li>저당 초코 크림 도넛</li>
+          <li>초코 푸딩 도넛</li>
+          <li>클래식 바닐라 도넛</li>
+          <li>라즈베리 도넛</li>
+        </ul>
+        <div class="menu_recommend_nav">
+          <button class="menu_recommend_prev" aria-label="이전"></button>
+          <button class="menu_recommend_next" aria-label="다음"></button>
+        </div>
+      </div>
+      <div class="menu_recommend_swiper_wrap">
+        <div class="swiper menu_recommend_swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="/assets/images/dount1.png" alt="얼그레이 도넛">
+              <h4>얼그레이 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount2.png" alt="레몬 슈가 도넛">
+              <h4>레몬 슈가 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount3.png" alt="저당 크림 도넛">
+              <h4>저당 크림 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount4.png" alt="저당 초코 크림 도넛">
+              <h4>저당 초코 크림 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount5.png" alt="초코 푸딩 도넛">
+              <h4>초코 푸딩 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount6.png" alt="클래식 바닐라 도넛">
+              <h4>클래식 바닐라 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount7.png" alt="라즈베리 도넛">
+              <h4>라즈베리 도넛</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="section tms-section-second">
+    <h1>New Menu</h1>
+    <div class="swiper menu_swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="menu_card">
+            <img src="/assets/images/new-menu1.png" alt="생딸기 초코 가든 케이크">
+            <h4>생딸기 초코 가든 케이크</h4>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="menu_card">
+            <img src="/assets/images/new-menu2.png" alt="화이트 슈가베어">
+            <h4>화이트 슈가베어</h4>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="menu_card">
+            <img src="/assets/images/new-menu3.png" alt="코지 니트 슈가베어">
+            <h4>코지 니트 슈가베어</h4>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="menu_card">
+            <img src="/assets/images/new-menu4.png" alt="초코 가나슈">
+            <h4>초코 가나슈</h4>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="menu_card">
+            <img src="/assets/images/new-menu5.png" alt="생딸기 생크림">
+            <h4>생딸기 생크림</h4>
+          </div>
+        </div>
+      </div>
+      <div class="menu_nav prev"></div>
+      <div class="menu_nav next"></div>
+    </div>
+  </section>
+  <script>
+    const menuSwiper = new Swiper(".menu_swiper", {
+      slidesPerView: "auto",
+      centeredSlides: true,
+      spaceBetween: 24,
+
+      loop: true,
+      loopedSlides: 5,
+      loopAdditionalSlides: 5,
+
+      speed: 900,
+
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false, // ← 일단 false로
+      },
+
+      watchSlidesProgress: true,
+
+      observer: true,        // ⭐ 핵심
+      observeParents: true,  // ⭐ 핵심
+      observeSlideChildren: true,
+
+      navigation: {
+        nextEl: ".menu_nav.next",
+        prevEl: ".menu_nav.prev",
+      },
+    });
+  </script>
+
+  <section class="section tms-section-third">
+    <div class="menu_recommend_inner">
+      <div class="menu_recommend_text">
+        <h1>Best Cake</h1>
+        <p>노티드가 엄선한 가장 HOT한 케이크!</p>
+        <ul class="menu_recommend_list">
+          <li class="is_active">얼그레이 도넛</li>
+          <li>레몬 슈가 도넛</li>
+          <li>저당 크림 도넛</li>
+          <li>저당 초코 크림 도넛</li>
+          <li>초코 푸딩 도넛</li>
+          <li>클래식 바닐라 도넛</li>
+          <li>라즈베리 도넛</li>
+        </ul>
+        <div class="menu_recommend_nav">
+          <button class="menu_recommend_prev" aria-label="이전"></button>
+          <button class="menu_recommend_next" aria-label="다음"></button>
+        </div>
+      </div>
+      <div class="menu_recommend_swiper_wrap">
+        <div class="swiper menu_recommend_swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="/assets/images/dount1.png" alt="얼그레이 도넛">
+              <h4>얼그레이 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount2.png" alt="레몬 슈가 도넛">
+              <h4>레몬 슈가 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount3.png" alt="저당 크림 도넛">
+              <h4>저당 크림 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount4.png" alt="저당 초코 크림 도넛">
+              <h4>저당 초코 크림 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount5.png" alt="초코 푸딩 도넛">
+              <h4>초코 푸딩 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount6.png" alt="클래식 바닐라 도넛">
+              <h4>클래식 바닐라 도넛</h4>
+            </div>
+            <div class="swiper-slide">
+              <img src="/assets/images/dount7.png" alt="라즈베리 도넛">
+              <h4>라즈베리 도넛</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  <script>
+    const menuRecommendSwiper = new Swiper(".menu_recommend_swiper", {
+      slidesPerView: 3,
+      spaceBetween: 24,
+      speed: 1000,
+      navigation: {
+        nextEl: ".menu_recommend_next",
+        prevEl: ".menu_recommend_prev",
+      },
+      breakpoints: {
+        1024: {
+          slidesPerView: 3.5,
+        },
+        768: {
+          slidesPerView: 2.5,
+        },
+        576: {
+          slidesPerView: 1.2,
+        }
+      }
+    });
+  </script>
+
   <!-- value_section -->
-  <div class="page value_section">
-    <div class="value_inner">
+  <!-- <div class="section menu-introduction">
+    <div class="introduction-inner">
       <div class="value_overlay">
         <div class="value_text">
-          <h3 data-aos="fade-up" data-aos-delay="200">챔피언을 <span>선택하세요</span></h3>
+          <h1 data-aos="fade-up" data-aos-delay="200">메뉴 소개</h1>
           <p data-aos="fade-up" data-aos-delay="400">적진으로 돌격하거나 팀원을 보조하는 등, 소환사의 협곡에는 다양한 역할군이 있습니다.</p>
-          <a class="btn_w" href="#">더 많은 챔피언 알아보기</a>
-          <a class="btn_w" href="#">지금 플레이하기</a>
+          <a class="btn_w" href="#">바로가기</a>
         </div>
       </div>
       <ul class="value_list">
         <li class="value_item active" data-bg="assets/img/Akali_0.jpg"
-          data-char="assets/img/befd42ad6d2564159a441d08cfc3bf511532eb74-1628x1628.webp">
-          <img src="assets/img/e1511d4d93a84b836844c77b4ff96b1cf65f4f8d-220x220.webp" alt="암살자 icon">
-          <p>암살자</p>
+          data-char="/assets/images/maxresdefault.jpg">
+          <img src="/assets/images/menu-main1.png" alt="Menu All">
+          <p>Menu All</p>
         </li>
         <li class="value_item" data-bg="assets/img/Yasuo_0.jpg"
-          data-char="assets/img/70c26e49de8a2c79ac3de144772d2debd195edff-1628x1628.avif">
-          <img src="assets/img/651b0a4388dffbb709588546d7d73fd1a4e5b45d-220x220.webp" alt="전사 icon">
-          <p>전사</p>
+          data-char="/assets/images/maxresdefault.jpg">
+          <img src="/assets/images/menu-main2.png" alt="Donut">
+          <p>Donut</p>
         </li>
         <li class="value_item" data-bg="assets/img/Lux_0.jpg "
-          data-char="assets/img/ff6c8c57411e5c7e0551b02334fccedc78866143-1628x1628.avif">
-          <img src="assets/img/9872a60add3d215d217eda67e08a07ef7191ab89-220x220.avif" alt="마법사 icon">
-          <p>마법사</p>
+          data-char="/assets/images/maxresdefault.jpg">
+          <img src="/assets/images/menu-main3.png" alt="Bakery">
+          <p>Bakery</p>
         </li>
         <li class="value_item" data-bg="assets/img/Jinx_0.jpg"
-          data-char="assets/img/f136500bd46f823d37515a72b867425d3a0b3e54-1628x1628.png">
-          <img src="assets/img/fce8a3c7b1267ce428530fa845dd3f970772d5cd-220x220.avif" alt="원거리 딜러 icon">
-          <p>원거리 딜러</p>
+          data-char="/assets/images/maxresdefault.jpg">
+          <img src="/assets/images/menu-main4.png" alt="Cake">
+          <p>Cake</p>
         </li>
         <li class="value_item" data-bg="assets/img/Thresh_0.jpg"
-          data-char="assets/img/dbdded937cd214bb2a1189697a9e4f49f8c04505-1628x1628.avif">
-          <img src="assets/img/1824a47af762aeac9d88d3bae5a4eb2ece928f0d-220x220.avif" alt="서포터 icon">
-          <p>서포터</p>
-        </li>
-        <li class="value_item" data-bg="assets/img/Leona_0.jpg"
-          data-char="assets/img/95daf6dd2b28f03d5ba2ea1fabbabc3bc3ff6e6e-1628x1628.avif">
-          <img src="assets/img/019898f21e749a5f6f71b609714d87f3fe084df5-220x220.avif" alt="탱커 icon">
-          <p>탱커</p>
+          data-char="/assets/images/maxresdefault.jpg">
+          <img src="/assets/images/menu-main5.png" alt="Beverage">
+          <p>Beverage</p>
         </li>
       </ul>
     </div>
@@ -168,7 +365,7 @@
         }
       });
     });
-  </script>
+  </script> -->
 
   <div id="tms-footer"></div>
 </body>
