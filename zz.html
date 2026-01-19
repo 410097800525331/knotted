@@ -1,15 +1,210 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diptyque Vertical Header</title>
-
+  <title>Online Shop</title>
+  <link rel="stylesheet" href="/css/shop.css" />
   <style>
+    :root {
+      --tm: #ff6f91;
+      --gray: #777;
+    }
+
+    body {
+      margin: 0;
+      font-family: Pretendard, sans-serif;
+      color: #111;
+    }
+
+    .shop_container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .shop_title {
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+    }
+
+    .shop_layout {
+      display: flex;
+      gap: 40px;
+    }
+
+    /* 카테고리 */
+    .shop_category {
+      width: 220px;
+    }
+
+    .category_depth1>li {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+
+    .category_depth1>li.is_active {
+      font-weight: 600;
+      color: var(--tm);
+    }
+
+    .category_depth2 {
+      margin-top: 10px;
+      padding-left: 12px;
+    }
+
+    .category_depth2 li {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    /* 상품 */
+    .shop_products {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product_card {
+      border: 1px solid #eee;
+      padding: 16px;
+      transition: transform 0.3s;
+    }
+
+    .product_card:hover {
+      transform: translateY(-4px);
+    }
+
+    .product_card img {
+      width: 100%;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .product_card h4 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .product_card p {
+      font-size: 1.3rem;
+      color: var(--gray);
+    }
+
+    /* 반응형 */
+    @media (max-width: 1024px) {
+      .shop_products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .shop_layout {
+        flex-direction: column;
+      }
+
+      .shop_category {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .shop_products {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
 
+  <section class="shop_container">
+    <h1 class="shop_title">Online Shop</h1>
+
+    <div class="shop_layout">
+      <!-- 카테고리 -->
+      <aside class="shop_category">
+        <ul class="category_depth1">
+          <li class="category_item is_active" data-filter="all">전체</li>
+
+          <li class="category_item">푸드
+            <ul class="category_depth2">
+              <li data-filter="dessert">디저트</li>
+              <li data-filter="chocolate">초콜릿 / 캔디</li>
+              <li data-filter="drink">커피 / 음료</li>
+              <li data-filter="vitamin">비타민</li>
+            </ul>
+          </li>
+
+          <li class="category_item">리빙
+            <ul class="category_depth2">
+              <li data-filter="party">파티용품</li>
+              <li data-filter="stationery">문구</li>
+              <li data-filter="home">홈데코 / 키친</li>
+              <li data-filter="outdoor">아웃도어</li>
+            </ul>
+          </li>
+
+          <li class="category_item" data-filter="bulk">대량주문</li>
+        </ul>
+      </aside>
+
+      <!-- 상품 영역 -->
+      <div class="shop_products">
+        <div class="product_card dessert">
+          <img src="/assets/img/product1.jpg" alt="">
+          <h4>초콜릿 도넛</h4>
+          <p>₩4,500</p>
+        </div>
+
+        <div class="product_card drink">
+          <img src="/assets/img/product2.jpg" alt="">
+          <h4>시그니처 커피</h4>
+          <p>₩5,800</p>
+        </div>
+
+        <div class="product_card home">
+          <img src="/assets/img/product3.jpg" alt="">
+          <h4>홈 머그컵</h4>
+          <p>₩12,000</p>
+        </div>
+
+        <div class="product_card bulk">
+          <img src="/assets/img/product4.jpg" alt="">
+          <h4>기업 대량주문 세트</h4>
+          <p>견적 문의</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    const categoryButtons = document.querySelectorAll('[data-filter]');
+    const products = document.querySelectorAll('.product_card');
+
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        categoryButtons.forEach(b => b.classList.remove('is_active'));
+        btn.classList.add('is_active');
+
+        products.forEach(product => {
+          if (filter === 'all' || product.classList.contains(filter)) {
+            product.style.display = 'block';
+          } else {
+            product.style.display = 'none';
+          }
+        });
+      });
+    });
+
+  </script>
+  <script src="/js/shop.js"></script>
 </body>
+
 </html>

@@ -14,8 +14,8 @@ $(document).ready(function () {
         <li class="nav_item">
           <button class="nav_title">Online Shop</button>
           <ul class="nav_sub">
-            <li><a href="/knottedstore/.html">푸드</a></li>
-            <li><a href="/knottedstore/.html">리빙</a></li>
+            <li><a href="/knottedstore/shop.html">푸드</a></li>
+            <li><a href="/knottedstore/shop.html">리빙</a></li>
           </ul>
         </li>
 

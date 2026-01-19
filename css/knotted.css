@@ -3,6 +3,7 @@
 @import url(common.css);
 
 .content {
+  max-width: 1700px;
   margin-left: 200px;
   padding: 16px;
 }
@@ -74,7 +75,7 @@
   }
 }
 
-/* 메뉴 */
+/* 베스트 메뉴 */
 .best_inner {
   display: flex;
   text-align: left;
@@ -160,4 +161,14 @@
   .menu_recommend_swiper_wrap {
     width: 100%;
   }
+}
+
+/* 인스타 */
+.insta_inner p {
+  margin: 12px 0 40px;
+  font-size: 1rem;
+}
+.insta_swiper .swiper-slide {
+  border-radius: 16px;
+  overflow: hidden;
 }

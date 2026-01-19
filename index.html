@@ -158,7 +158,7 @@
         </div>
       </div>
   </section>
-  <section class="content" data-aos="fade-left" data-aos-duration="3000">
+  <section class="content" data-aos="fade-right" data-aos-duration="3000">
     <div class="best_inner">
       <div class="best_menu_text">
         <h1>Best Cake</h1>
@@ -256,8 +256,63 @@
     });
   </script>
 
+  <section class="content" data-aos="fade-up" data-aos-duration="2000">
+    <div class="insta_inner">
+      <h1>Instagram</h1>
+      <p>@cafeknotted_kr</p>
+      <div class="swiper insta_swiper">
+        <a href="https://www.instagram.com/cafeknotted_kr/" target="_blank" class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/assets/images/instar1.jpg" alt="인스타 이미지 1">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/instar2.jpg" alt="인스타 이미지 2">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/instar3.jpg" alt="인스타 이미지 3">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/instar4.jpg" alt="인스타 이미지 4">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/instar5.jpg" alt="인스타 이미지 5">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/instar6.jpg" alt="인스타 이미지 6">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/instar7.jpg" alt="인스타 이미지 7">
+          </div>
+          <div class="swiper-slide">
+            <img src="/assets/images/instar8.jpg" alt="인스타 이미지 8">
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <script>
+    const instaSwiper = new Swiper(".insta_swiper", {
+      slidesPerView: 5,
+      spaceBetween: 16,
+      speed: 800,
+      loop: true,
 
-  <footer class="footer" data-aos="fade-down"></footer>
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+
+      breakpoints: {
+        1024: { slidesPerView: 4 },
+        768: { slidesPerView: 3 },
+        576: { slidesPerView: 2 },
+      },
+    });
+  </script>
+
+
+  <footer class="footer"></footer>
 </body>
 
 </html>
