@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diptyque Vertical Header</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 1rem;
+      color: #111;
+    }
+
+    /* ===== Vertical Header ===== */
+    .vertical_header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      padding: 32px 20px;
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+      overflow-y: auto;
+    }
+
+    .brand_logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06rem;
+      margin-bottom: 40px;
+    }
+
+    /* ===== Navigation ===== */
+    .nav_menu {
+      list-style: none;
+    }
+
+    .nav_item {
+      margin-bottom: 14px;
+    }
+
+    .nav_title {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 10px 0;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .nav_sub {
+      list-style: none;
+      padding-left: 12px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .nav_item.is_active .nav_sub {
+      max-height: 600px;
+    }
+
+    .nav_sub li a {
+      display: block;
+      padding: 6px 0;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .nav_sub li a:hover {
+      color: #000;
+    }
+
+    /* ===== Main Content (미리보기용) ===== */
+    .main_content {
+      margin-left: 260px;
+      padding: 60px;
+    }
+
+    .main_content h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .main_content p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .vertical_header {
+        width: 220px;
+      }
+
+      .main_content {
+        margin-left: 220px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .vertical_header {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .main_content {
+        margin-left: 0;
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="vertical_header">
+  <h1 class="brand_logo">DIPTYQUE</h1>
+
+  <nav>
+    <ul class="nav_menu">
+
+      <li class="nav_item">
+        <button class="nav_title">신규 및 인기 상품</button>
+        <ul class="nav_sub">
+          <li><a href="#">서브1</a></li>
+          <li><a href="#">서브2</a></li>
+          <li><a href="#">서브3</a></li>
+          <li><a href="#">서브4</a></li>
+        </ul>
+      </li>
+
+      <li class="nav_item">
+        <button class="nav_title">선물</button>
+        <ul class="nav_sub">
+          <li><a href="#">서브1</a></li>
+          <li><a href="#">서브2</a></li>
+          <li><a href="#">서브3</a></li>
+        </ul>
+      </li>
+
+      <li class="nav_item">
+        <button class="nav_title">향수</button>
+        <ul class="nav_sub">
+          <li><a href="#">서브1</a></li>
+          <li><a href="#">서브2</a></li>
+          <li><a href="#">서브3</a></li>
+          <li><a href="#">서브4</a></li>
+          <li><a href="#">서브5</a></li>
+        </ul>
+      </li>
+
+      <li class="nav_item">
+        <button class="nav_title">양초 및 홈</button>
+        <ul class="nav_sub">
+          <li><a href="#">서브1</a></li>
+          <li><a href="#">서브2</a></li>
+        </ul>
+      </li>
+
+      <li class="nav_item">
+        <button class="nav_title">배스앤바디</button>
+        <ul class="nav_sub">
+          <li><a href="#">서브1</a></li>
+          <li><a href="#">서브2</a></li>
+          <li><a href="#">서브3</a></li>
+        </ul>
+      </li>
+
+      <li class="nav_item">
+        <button class="nav_title">홈 데코</button>
+        <ul class="nav_sub">
+          <li><a href="#">서브1</a></li>
+          <li><a href="#">서브2</a></li>
+        </ul>
+      </li>
+
+      <li class="nav_item">
+        <button class="nav_title">딥티크 소개</button>
+        <ul class="nav_sub">
+          <li><a href="#">서브1</a></li>
+          <li><a href="#">서브2</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+<main class="main_content">
+  <h2>Diptyque</h2>
+  <p>
+    이 영역은 메인 콘텐츠 영역입니다.<br />
+    세로형 헤더가 있는 구조에서 상품 리스트, 배너, 상세 페이지가 들어가게 됩니다.
+  </p>
+</main>
+
+<script>
+  const nav_titles = document.querySelectorAll(".nav_title");
+
+  nav_titles.forEach((title) => {
+    title.addEventListener("click", () => {
+      const parent = title.closest(".nav_item");
+      parent.classList.toggle("is_active");
+    });
+  });
+</script>
+
+</body>
+</html>
