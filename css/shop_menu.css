@@ -1,10 +1,19 @@
 @charset "utf-8";
 
-.menu_wrap {
+.shop_wrap .btn {
+  width: 100px;
+  padding: 8px 16px;
+  background: var(--mango-50);
+  color: var(--slate-100);
+  margin-top: 16px;
+}
+.menu_wrap,
+.shop_wrap {
   display: flex;
   min-height: 100vh;
 }
-.menu_category {
+.menu_category,
+.shop_category {
   position: relative;
   width: 8%;
   min-width: 120px;
@@ -26,7 +35,9 @@
   cursor: pointer;
 }
 .category_item.is_active,
-.category_item.beverage.is_active {
+.category_item.beverage.is_active,
+.category_item.food.is_active,
+.category_item.living.is_active  {
   opacity: 1;
   color: var(--slate-100);
   font-weight: 600;
@@ -37,7 +48,10 @@
   width: 40px; height: 2px;
   background: var(--raspberry-0);
 }
-.category_item.beverage {
+/* 기존 */
+.category_item.beverage,
+.category_item.food,
+.category_item.living {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -47,21 +61,30 @@
   margin-bottom: 2px;
   letter-spacing: 0.1em;
   color: var(--slate-50);
-}
-.category_item.beverage.is_open {
-  max-height: 28px;
-  opacity: 1;
+  display: none; /* 새로 추가 */
 }
 
-.menu_content {
+.category_item.beverage.is_open,
+.category_item.food.is_open,
+.category_item.living.is_open {
+  max-height: 28px;
+  opacity: 1;
+  display: block; /* 새로 추가 */
+}
+
+
+.menu_content,
+.shop_content {
   width: 92%;
 }
-.menu_grid {
+.menu_grid,
+.shop_grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
 }
-.menu_card {
+.menu_card,
+.shop_card {
   text-align: center;
   background: #fff;
   padding-bottom: 16px;
@@ -69,7 +92,8 @@
   box-shadow: 0 0 30px var(--raspberry-z);
   cursor: pointer;
 }
-.menu_card img {
+.menu_card img,
+.shop_card img {
   width: 300px; height: 300px;
 }
 @media (max-width: 1024px) {
