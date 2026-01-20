@@ -49,8 +49,8 @@ $(document).ready(function () {
         <li class="nav_item">
           <button class="nav_title">Help</button>
           <ul class="nav_sub">
-          <li><a href="/knottedstore/faq.html">1:1 문의</a></li>
-          <li><a href="/knottedstore/.html">자주 묻는 질문</a></li>
+          <li><a href="/knottedstore/inquiry.html">1:1 문의</a></li>
+          <li><a href="/knottedstore/faq.html">자주 묻는 질문</a></li>
           </ul>
         </li>
 

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/knotted.css">
+  <link rel="stylesheet" href="/css/faq.css">
 
   <!-- JS libraries -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -31,7 +32,82 @@
 
 <body>
   <div class="header"></div>
-  <section></section>
+  <section class="faq">
+    <h2>자주 묻는 질문</h2>
+
+    <!-- 탭 -->
+    <ul class="faq_tabs">
+      <li class="is_active" data-tab="all">전체</li>
+      <li data-tab="product">제품문의</li>
+      <li data-tab="reserve">예약문의</li>
+      <li data-tab="etc">기타문의</li>
+      <li data-tab="member">회원문의</li>
+    </ul>
+
+    <!-- FAQ 리스트 -->
+    <ul class="faq_list">
+      <li class="faq_item" data-category="product">
+        <button class="faq_question">
+          Q. 재고 확인이 가능한가요?
+        </button>
+        <div class="faq_answer">
+          A. 매장 상황은 실시간으로 변동되어 재고 확인이 불가합니다.<br>
+          매장 방문을 통해 확인 부탁드리며, 당일 현장 상황에 따라 조기 소진 및 대기가 발생할 수 있습니다.
+        </div>
+      </li>
+
+      <li class="faq_item" data-category="reserve">
+        <button class="faq_question">
+          Q. 예약은 어떻게 하나요?
+        </button>
+        <div class="faq_answer">
+          A. 예약은 공식 홈페이지 또는 매장을 통해 가능합니다.
+        </div>
+      </li>
+
+      <li class="faq_item" data-category="member">
+        <button class="faq_question">
+          Q. 회원 혜택이 있나요?
+        </button>
+        <div class="faq_answer">
+          A. 회원 가입 시 다양한 이벤트와 혜택을 제공해드립니다.
+        </div>
+      </li>
+
+      <!-- 이런 식으로 총 14개 추가 -->
+    </ul>
+  </section>
+  <script></script>
+  <script>
+    // 탭 필터
+    const tabs = document.querySelectorAll('.faq_tabs li');
+    const items = document.querySelectorAll('.faq_item');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('is_active'));
+        tab.classList.add('is_active');
+
+        const category = tab.dataset.tab;
+
+        items.forEach(item => {
+          if (category === 'all' || item.dataset.category === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 아코디언
+    items.forEach(item => {
+      const question = item.querySelector('.faq_question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('is_open');
+      });
+    });
+  </script>
   <div class="footer"></div>
 </body>
 
