@@ -9,6 +9,7 @@
 :root {
   --mango-0: #fdfaf7;
   --mango-50: #FFF0A0;
+  --raspberry-z: #fecdd333;
   --raspberry-0: #FECDD3;
   --raspberry-50: #EE9DC2;
   --slate-0: #ddd;
@@ -34,7 +35,7 @@ h3 {
 }
 .highlight {
   display: inline;
-  background-image: linear-gradient(transparent 60%, #fecdd333 60%);
+  background-image: linear-gradient(transparent 60%, var(--raspberry-z) 60%);
   margin-bottom: 40px;
 }
 

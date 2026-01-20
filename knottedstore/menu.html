@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/knotted.css">
-  <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/css/shop_menu.css">
 
   <!-- JS libraries -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -43,35 +43,18 @@
             <div class="category_item" data-category="donut">DONUT</div>
             <div class="category_item" data-category="bakepy">BAKEPY</div>
             <div class="category_item" data-category="cake">CAKE</div>
-            <div class="category_item" data-category="beverage">BEVERAGE</div>
+            <div class="category_item" data-category="beverage" data-type="parent">BEVERAGE</div>
+
+            <div class="category_item beverage" data-category="beverage" data-sub="signature">Signature</div>
+            <div class="category_item beverage" data-category="beverage" data-sub="coffee">Coffee</div>
+            <div class="category_item beverage" data-category="beverage" data-sub="tea">Tea</div>
+            <div class="category_item beverage" data-category="beverage" data-sub="noncoffee">Non-Coffee</div>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT -->
       <div class="menu_content">
-        <div class="menu_grid">
-
-          <div class="menu_card" data-category="donut">
-            <img src="/assets/images/menu-donut.jpg" alt="도넛">
-            <h4>생딸기 프레지에 도넛</h4>
-          </div>
-          <div class="menu_card" data-category="donut">
-            <img src="/assets/images/menu-donut.jpg" alt="도넛">
-            <h4>생딸기 말차 프레지에 도넛</h4>
-          </div>
-
-          <div class="menu_card" data-category="bakepy">
-            <img src="/assets/images/menu-donut.jpg" alt="">
-            <h4>생딸기 프레지에 도넛</h4>
-          </div>
-
-          <div class="menu_card" data-category="cake">
-            <img src="/assets/images/menu-donut.jpg" alt="">
-            <h4>생딸기 말차 프레지에 도넛</h4>
-          </div>
-
-        </div>
+        <div class="menu_grid"></div>
       </div>
     </div>
   </section>
