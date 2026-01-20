@@ -34,11 +34,17 @@ h3 {
 }
 .highlight {
   display: inline;
-  background-image: linear-gradient(transparent 60%, var(--mango-50) 60%);
+  background-image: linear-gradient(transparent 60%, #fecdd333 60%);
   margin-bottom: 40px;
 }
 
 /* BUTTON */
+.btn {
+  width: 100%;
+  padding: 12px 0;
+  color: #fff;
+  background: var(--raspberry-50);
+}
 .btn_w {
   position: relative;
   display: inline-block;

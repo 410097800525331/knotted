@@ -31,10 +31,7 @@ $(document).ready(function () {
         <li class="nav_item">
           <button class="nav_title">Menu</button>
           <ul class="nav_sub">
-          <li><a href="/knottedstore/menu.html">빵</a></li>
-            <li><a href="/knottedstore/menu.html">도넛</a></li>
-            <li><a href="/knottedstore/menu.html">케이크</a></li>
-            <li><a href="/knottedstore/menu.html">음료</a></li>
+            <li><a href="/knottedstore/menu.html">메뉴 소개</a></li>
           </ul>
         </li>
 
