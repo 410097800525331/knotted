@@ -1,1 +1,249 @@
 @charset "utf-8";
+
+:root {
+  --cream: #fffaf3;
+  --beige: #f4efe9;
+  --pink: #f3b6c6;
+  --brown: #5a3e36;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.pickup button {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  background: var(--pink);
+  color: #fff;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #fff;
+  color: var(--brown);
+  border: 1px solid #ddd;
+}
+
+.step {
+  display: none;
+}
+
+.step.is_active {
+  display: block;
+}
+
+/* STEP 1 */
+.store_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.store_card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.store_card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.store_info {
+  position: absolute;
+  inset: 0;
+  background: rgba(90, 62, 54, .75);
+  color: #fff;
+  padding: 24px;
+  opacity: 0;
+  transition: .3s;
+}
+
+.store_card:hover .store_info {
+  opacity: 1;
+}
+
+/* STEP 2 */
+.menu_layout {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 32px;
+}
+
+.menu_category {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.menu_category button.active {
+  background: var(--brown);
+}
+
+.menu_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.menu_card {
+  background: var(--beige);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .06);
+}
+
+.menu_card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.menu_card h4 {
+  margin: 10px 0 4px;
+}
+
+.menu_card .price {
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+/* 선택 영역 */
+.selected_box {
+  background: #fff;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+.selected_store_box {
+  background: var(--beige);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 16px;
+  font-size: .9rem;
+}
+
+.selected_store_box strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.selected_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 90px;
+}
+
+.qty span {
+  width: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.qty button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.remove {
+  color: #d66;
+  cursor: pointer;
+}
+
+/* STEP 3 날짜/시간 */
+.datetime_custom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.date_list,
+.time_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.date_item,
+.time_item {
+  background: var(--beige);
+  border-radius: 14px;
+  padding: 14px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.date_item:hover,
+.time_item:hover {
+  background: #f0dfe5;
+}
+
+.date_item.active,
+.time_item.active {
+  background: var(--pink);
+  color: #fff;
+  font-weight: bold;
+}
+
+.notice {
+  background: var(--beige);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* 모달 */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.is_open {
+  display: flex;
+}
+
+.modal_content {
+  background: #fff;
+  width: 420px;
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+}
+
+.modal_close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  cursor: pointer;
+}

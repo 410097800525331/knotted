@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/knotted.css">
+  <link rel="stylesheet" href="/css/pickup.css">
 
   <!-- JS libraries -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -26,12 +27,96 @@
 
   <!-- custom JS -->
   <script src="/js/common.js"></script>
+  <script src="/js/pickup.js"></script>
 </head>
 
 
 <body>
+  <div class="content user"></div>
   <div class="header"></div>
-  <section></section>
+  <section class="pickup">
+    <div class="container">
+      <!-- STEP 1 -->
+      <section class="step is_active" id="step1">
+        <h2>매장 선택</h2>
+        <div class="store_list">
+          <div class="store_card" onclick="selectStore('광주 상무','10:00 ~ 20:00')">
+            <img src="/assets/images/광주상무.webp" alt="노티드 광주 상무점">
+            <div>
+              <h3>광주 상무</h3>
+              <p>주소: 광주광역시 서구 치평동 1208-5</p>
+              <p>영업시간 11:00–21:00</p>
+              <p>픽업가능시간 11:00–21:00</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="step" id="step2">
+        <button class="secondary" onclick="goStep(1)">← 매장 다시 선택</button>
+        <h2>Step 2 메뉴 선택</h2>
+
+        <div class="menu_layout">
+          <div>
+            <div class="menu_category">
+              <button class="active" onclick="filterMenu('all',this)">전체</button>
+              <button onclick="filterMenu('donut',this)">도넛</button>
+              <button onclick="filterMenu('cake',this)">케이크</button>
+            </div>
+            <div class="menu_list" id="menu_list"></div>
+          </div>
+
+          <div class="selected_box">
+            <div class="selected_store_box" id="store_info_box"></div>
+            <h3>선택한 메뉴</h3>
+            <div id="selected_list"></div>
+            <hr>
+            <p id="total"></p>
+            <button onclick="goStep(3)">날짜 선택하기</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="step" id="step3">
+        <button class="secondary" onclick="goStep(2)">← 메뉴 다시 선택</button>
+        <h2>Step 3 날짜 선택</h2>
+
+        <div class="datetime_custom">
+          <div>
+            <h4>픽업 날짜</h4>
+            <div class="date_list" id="date_list"></div>
+          </div>
+          <div>
+            <h4>픽업 시간</h4>
+            <div class="time_list" id="time_list"></div>
+          </div>
+        </div>
+
+        <p id="selected_datetime" style="font-weight:bold;"></p>
+
+        <div class="notice">
+          <h4>주의사항</h4>
+          <p>당일 취소 및 환불 불가</p>
+        </div>
+
+        <button onclick="openModal()">선택 완료</button>
+      </section>
+
+    </div>
+
+    <!-- 모달 -->
+    <div class="modal" id="detail_modal">
+      <div class="modal_content">
+        <span class="modal_close" onclick="closeDetail()">✕</span>
+        <h3 id="detail_name"></h3>
+        <p id="detail_desc"></p>
+        <p id="detail_price"></p>
+        <button onclick="addMenuFromDetail()">담기</button>
+      </div>
+    </div>
+  </section>
   <div class="footer"></div>
 </body>
 

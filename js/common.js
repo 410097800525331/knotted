@@ -23,7 +23,7 @@ $(document).ready(function () {
           <button class="nav_title">Reservation</button>
           <ul class="nav_sub">
             <li><a href="/knottedstore/pickup.html">픽업 예약</a></li>
-            <li><a href="/knottedstore/.html">대량 주문</a></li>
+            <li><a href="/knottedstore/bulk-order.html">대량 주문</a></li>
             <li><a href="/knottedstore/location.html">매장 안내</a></li>
           </ul>
         </li>
@@ -42,7 +42,7 @@ $(document).ready(function () {
           <button class="nav_title">Event</button>
           <ul class="nav_sub">
             <li><a href="/knottedstore/event.html">이벤트</a></li>
-            <li><a href="/knottedstore/notic.html">공지사항</a></li>
+            <li><a href="/knottedstore/notice.html">공지사항</a></li>
           </ul>
         </li>
 
@@ -57,7 +57,7 @@ $(document).ready(function () {
         <li class="nav_item">
           <button class="nav_title">Contact</button>
           <ul class="nav_sub">
-            <li><a href="/knottedstore/.html">제안하기</a></li>
+            <li><a href="/knottedstore/In-Bound.html">제안하기</a></li>
             <li><a href="/knottedstore/employment.html">채용안내</a></li>
           </ul>
         </li>
@@ -87,6 +87,19 @@ $(document).ready(function () {
     });
   });
 
+
+
+  const user = `
+    <input class="search" placeholder="Search" />
+    <div>
+      <a href="#">Login</a>
+      <a href="#">Join</a>
+      <a href="#">Cart</a>
+    </div>
+  `;
+
+  $(".user").append(user);
+  
   // footer
   const footer = `
     

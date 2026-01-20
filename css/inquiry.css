@@ -64,11 +64,10 @@
   border-radius: 20px;
 }
 .status.waiting {
-  background: #f2f2f2;
-  color: #555;
+  background: var(--slate-0);
 }
 .status.done {
-  background: #000;
+  background: var(--raspberry-50);
   color: #fff;
 }
 .subject {
