@@ -12,19 +12,19 @@ $(document).ready(function () {
         </li>
 
         <li class="nav_item">
-          <button class="nav_title">Online Shop</button>
-          <ul class="nav_sub">
-            <li><a href="/knottedstore/shop.html">푸드</a></li>
-            <li><a href="/knottedstore/shop.html">리빙</a></li>
-          </ul>
-        </li>
-
-        <li class="nav_item">
           <button class="nav_title">Reservation</button>
           <ul class="nav_sub">
             <li><a href="/knottedstore/pickup.html">픽업 예약</a></li>
             <li><a href="/knottedstore/bulk-order.html">대량 주문</a></li>
             <li><a href="/knottedstore/location.html">매장 안내</a></li>
+          </ul>
+        </li>
+
+        <li class="nav_item">
+          <button class="nav_title">Online Shop</button>
+          <ul class="nav_sub">
+            <li><a href="/knottedstore/shop.html">푸드</a></li>
+            <li><a href="/knottedstore/shop.html">리빙</a></li>
           </ul>
         </li>
 
