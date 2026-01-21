@@ -25,12 +25,13 @@
   width: 100%;
   text-align: left;
   padding: 20px 0;
-  font-size: 1.3rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 .faq_answer {
   display: none;
-  padding-bottom: 20px;
+  font-size: .9rem;
+  padding-bottom: 30px;
 }
 .faq_item.is_open .faq_answer {
   display: block;
