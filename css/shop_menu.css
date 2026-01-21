@@ -1,11 +1,24 @@
 @charset "utf-8";
 
 .shop_wrap .btn {
-  width: 100px;
-  padding: 8px 16px;
+  width: 120px;
+  padding: 8px 32px;
   background: var(--mango-50);
   color: var(--slate-100);
   margin-top: 16px;
+}
+.null {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px 300px;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid var(--raspberry-0);
+  color: var(--slate-50);
+}
+.null img {
+  width: 80px;
 }
 .menu_wrap,
 .shop_wrap {
@@ -48,7 +61,6 @@
   width: 40px; height: 2px;
   background: var(--raspberry-0);
 }
-/* 기존 */
 .category_item.beverage,
 .category_item.food,
 .category_item.living {
@@ -61,17 +73,15 @@
   margin-bottom: 2px;
   letter-spacing: 0.1em;
   color: var(--slate-50);
-  display: none; /* 새로 추가 */
+  display: none;
 }
-
 .category_item.beverage.is_open,
 .category_item.food.is_open,
 .category_item.living.is_open {
   max-height: 28px;
   opacity: 1;
-  display: block; /* 새로 추가 */
+  display: block;
 }
-
 
 .menu_content,
 .shop_content {
@@ -87,7 +97,7 @@
 .shop_card {
   text-align: center;
   background: #fff;
-  padding-bottom: 16px;
+  padding: 16px;
   border-radius: 16px;
   box-shadow: 0 0 30px var(--raspberry-z);
   cursor: pointer;
@@ -95,6 +105,8 @@
 .menu_card img,
 .shop_card img {
   width: 300px; height: 300px;
+  margin-bottom: 16px;
+  border-radius: 8px;
 }
 @media (max-width: 1024px) {
   .menu_wrap {

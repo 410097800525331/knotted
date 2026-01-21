@@ -2,10 +2,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuGrid = document.querySelector(".menu_grid");
   const tabs = document.querySelectorAll(".category_item");
 
+  /* 🔽 fixed header 고려한 스크롤 이동 */
+  function scrollToMenuTop() {
+    if (!menuGrid) return;
+
+    const HEADER_HEIGHT = 100; // ⚠️ 헤더 높이에 맞게 조절
+    const y =
+      menuGrid.getBoundingClientRect().top +
+      window.scrollY -
+      HEADER_HEIGHT;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  }
+
   /* 메뉴 렌더링 */
   function renderMenu(category, sub = null) {
     menuGrid.innerHTML = "";
-
     let items = [];
 
     if (category === "all") {
@@ -29,17 +44,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (!items || items.length === 0) {
-      menuGrid.innerHTML = "<p>준비 중입니다.</p>";
+      menuGrid.innerHTML = "<div class='null'><img src='/assets/images/null.png'><p>해당 카테고리에 상품이 없습니다.</p></div>";
       return;
     }
 
     items.forEach(item => {
-      menuGrid.insertAdjacentHTML("beforeend", `
-      <div class="menu_card">
-        <img src="/assets/images/${item.image}.png" alt="${item.name}">
-        <h4>${item.name}</h4>
-      </div>
-    `);
+      menuGrid.insertAdjacentHTML(
+        "beforeend",
+        `
+        <div class="menu_card">
+          <img src="/assets/images/${item.image}.png" alt="${item.name}">
+          <h4>${item.name}</h4>
+        </div>
+        `
+      );
     });
   }
 
@@ -56,13 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
       // 클릭한 탭 active
       tab.classList.add("is_active");
 
-      // 🔥 beverage 서브 클릭 시 부모도 active 유지
+      // 🔥 beverage 서브 클릭 시
       if (category === "beverage" && sub) {
         document
-          .querySelector('.category_item[data-category="beverage"][data-type="parent"]')
-          .classList.add("is_active");
+          .querySelector(
+            '.category_item[data-category="beverage"][data-type="parent"]'
+          )
+          ?.classList.add("is_active");
 
         renderMenu("beverage", sub);
+        scrollToMenuTop();
         return;
       }
 
@@ -73,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         renderMenu("beverage");
+        scrollToMenuTop();
         return;
       }
 
@@ -82,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       renderMenu(category);
+      scrollToMenuTop();
     });
   });
 
