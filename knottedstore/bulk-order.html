@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/knotted.css">
-  <link rel="stylesheet" href="/css/bulk-order.css">
+  <link rel="stylesheet" href="/css/bulk-order_In-Bound.css">
 
   <!-- JS libraries -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -34,89 +34,70 @@
   <div class="content user"></div>
   <div class="header"></div>
 
-  <div class="content bulk_container">
-    <h1>대량 예약 주문</h1>
-
-    <div class="bulk_notice">
-      <strong>대량예약 운영 수량 안내</strong><br>
-      201개 이상부터 대량 주문 접수가 가능하며,<br>
-      200개 이하의 주문은 픽업 예약 페이지를 이용해 주세요.
-    </div>
-
-    <form>
-
-      <div class="form_group">
-        <label>이름<span>*</span></label>
-        <input type="text" required>
+  <div class="content">
+    <div class="proposal_inner">
+      <h2 class="highlight">대량 예약 주문</h2>
+      <div>
+        <strong>대량예약 운영 수량 안내</strong><br>
+        201개 이상부터 대량 주문 접수가 가능하며, 200개 이하의 주문은 픽업 예약 페이지를 이용해 주세요.
       </div>
-
-      <div class="form_group">
-        <label>연락처<span>*</span></label>
-        <input type="tel" required>
-      </div>
-
-      <div class="form_group">
-        <label>이메일<span>*</span></label>
-        <input type="email" required>
-      </div>
-
-      <div class="form_group">
-        <label>수령 매장<span>*</span></label>
-        <input type="text" required>
-      </div>
-
-      <div class="form_group">
-        <label>구매 메뉴 및 수량<span>*</span></label>
-        <textarea required placeholder="예) 초코 도넛 150개 / 딸기 도넛 80개"></textarea>
-      </div>
-
-      <div class="form_group">
-        <label>예약 날짜<span>*</span></label>
-        <input type="date" required>
-      </div>
-
-      <div class="form_group">
-        <label>구매 목적 및 행사명<span>*</span></label>
-        <input type="text" required>
-      </div>
-
-      <div class="form_group">
-        <label>사업자등록증 업로드<span>*</span></label>
-        <input type="file" required>
-      </div>
-
-      <div class="form_group">
-        <label>회사소개서 업로드<span>*</span></label>
-        <input type="file" required>
-      </div>
-
-      <div class="checkbox_group">
-        <label><input type="checkbox" required> 주의사항 내용 1 (임시)</label>
-        <label><input type="checkbox" required> 주의사항 내용 2 (임시)</label>
-        <label><input type="checkbox" required> 주의사항 내용 3 (임시)</label>
-        <label><input type="checkbox" required> 주의사항 내용 4 (임시)</label>
-      </div>
-
-      <div class="form_group">
-        <label>기타 요청사항</label>
-        <textarea placeholder="선택 입력"></textarea>
-      </div>
-
-      <div class="form_group">
-        <label>개인정보 수집 및 이용<span>*</span></label>
-        <div class="policy_box">
-          개인정보 수집 및 이용에 관한 내용이 들어갑니다. (임시)<br><br>
-          수집 항목, 이용 목적, 보관 기간 등에 대한 안내 문구를 여기에 작성하세요.
+      <form>
+        <div class="form_group">
+          <label>1. 성함을 입력해주세요<span>*</span></label>
+          <input type="text" required>
         </div>
-        <label>
-          <input type="checkbox" required>
-          개인정보 수집 및 이용에 동의합니다.
-        </label>
-      </div>
-
-      <button type="submit" class="submit_btn">작성 완료</button>
-
-    </form>
+        <div class="form_group">
+          <label>2. 연락처를 입력해주세요<span>*</span></label>
+          <input type="tel" required>
+        </div>
+        <div class="form_group">
+          <label>3. 이메일을 입력해주세요<span>*</span></label>
+          <input type="email" required>
+        </div>
+        <div class="form_group">
+          <label>4. 수령 매장을 입력해주세요<span>*</span></label>
+          <input type="text" required>
+        </div>
+        <div class="form_group">
+          <label>5. 구매 메뉴 및 수량을 입력해주세요<span>*</span></label>
+          <textarea required placeholder="예) 초코 도넛 150개 / 딸기 도넛 80개"></textarea>
+        </div>
+        <div class="form_group">
+          <label>6. 예약 날짜를 선택해주세요<span>*</span></label>
+          <input type="date" required>
+        </div>
+        <div class="form_group">
+          <label>7. 구매 목적 및 행사명을 입력해주세요<span>*</span></label>
+          <input type="text" required>
+        </div>
+        <div class="form_group">
+          <label>8. 사업자등록증 및 회사소개서를 업로드해주세요<span>*</span></label>
+          <input type="file" required>
+        </div>
+        <div class="checkbox_group">
+          <label><input type="checkbox" required> 주의사항 내용 1 (임시)</label>
+          <label><input type="checkbox" required> 주의사항 내용 2 (임시)</label>
+          <label><input type="checkbox" required> 주의사항 내용 3 (임시)</label>
+          <label><input type="checkbox" required> 주의사항 내용 4 (임시)</label>
+        </div>
+        <div class="form_group">
+          <label>기타 요청사항</label>
+          <textarea placeholder="선택 입력"></textarea>
+        </div>
+        <div class="form_group">
+          <label>개인정보 수집 및 이용<span>*</span></label>
+          <div class="policy_box">
+            개인정보 수집 및 이용에 관한 내용이 들어갑니다. (임시)<br><br>
+            수집 항목, 이용 목적, 보관 기간 등에 대한 안내 문구를 여기에 작성하세요.
+          </div>
+          <label>
+            <input type="checkbox" required>
+            개인정보 수집 및 이용에 동의합니다.
+          </label>
+        </div>
+        <button type="submit" class="btn">작성 완료</button>
+      </form>
+    </div>
   </div>
 
   <div class="footer"></div>
