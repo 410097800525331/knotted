@@ -4,7 +4,6 @@
   max-width: 900px;
   border-radius: 20px;
   margin: 60px auto 20px;
-  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
 }
 .proposal_inner .btn_w {
   width: 100%;
@@ -26,7 +25,7 @@ textarea {
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid var(--raspberry-0);
+  border-bottom: 1px solid var(--raspberry-0);
 }
 textarea {
   resize: vertical;
@@ -49,7 +48,8 @@ textarea {
 input,
 select,
 textarea {
-  border: 1px solid var(--raspberry-0);
+  border: none;
+  border-bottom: 1px solid var(--raspberry-0);
   border-radius: 0;
   padding: 14px 6px;
 }

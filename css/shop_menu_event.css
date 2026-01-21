@@ -21,7 +21,8 @@
   width: 80px;
 }
 .menu_wrap,
-.shop_wrap {
+.shop_wrap,
+.event_wrap {
   display: flex;
   min-height: 100vh;
 }
@@ -84,29 +85,57 @@
 }
 
 .menu_content,
-.shop_content {
+.shop_content,
+.event_content {
   width: 92%;
 }
 .menu_grid,
-.shop_grid {
+.shop_grid,
+.event_grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
 }
 .menu_card,
-.shop_card {
+.shop_card,
+.event_card {
   text-align: center;
   background: #fff;
   padding: 16px;
   border-radius: 16px;
   box-shadow: 0 0 30px var(--raspberry-z);
   cursor: pointer;
+  transition:
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+.menu_card:hover,
+.shop_card:hover,
+.event_card:hover {
+  box-shadow: 
+    0 10px 30px var(--raspberry-0),
+    inset 0 0 0 1px var(--raspberry-z);
+  filter: brightness(1.03);
 }
 .menu_card img,
-.shop_card img {
-  width: 300px; height: 300px;
+.shop_card img,
+.event_card img {
+  width: 300px;
+  height: 300px;
   margin-bottom: 16px;
   border-radius: 8px;
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+.menu_card:hover img,
+.shop_card:hover img,
+.event_card:hover img {
+  transform: scale(0.97);
+  filter: saturate(1.05);
+}
+.event_card img {
+  width: 360px;
 }
 @media (max-width: 1024px) {
   .menu_wrap {
