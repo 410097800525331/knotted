@@ -53,9 +53,9 @@ h3 {
   margin: 16px 8px;
   font-weight: 500;
   color: var(--raspberry-50);
-  border: 1px solid var(--raspberry-0);
+  border: 1px solid var(--raspberry-50);
   background: linear-gradient(to right,
-      var(--raspberry-0) 50%,
+      var(--raspberry-50) 50%,
       transparent 50%);
   background-size: 200% 100%;
   background-position: right bottom;
@@ -64,7 +64,7 @@ h3 {
 }
 .btn_w:hover {
   background-position: left bottom;
-  color: var(--slate-100);
+  color: #fff;
 }
 @media (max-width: 768px) {
   .btn_w {
