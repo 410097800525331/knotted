@@ -48,17 +48,18 @@
   border-top: 1px dashed var(--slate-50);
 }
 /* 소개 */
-.employment-slider {
-  max-width: 1000px;
+.employment_slider {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 40px;
 }
 .slider {
-  width: 300px;
+  width: 350px;
   height: 35px;
   overflow: hidden;
-  border: 1px solid var(--raspberry-50);
+  background: var(--mango-0);
+  border: 2px solid var(--raspberry-50);
   margin-left: 8px;
 }
 .slides {
