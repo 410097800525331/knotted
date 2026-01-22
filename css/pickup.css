@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-:root {
+/* :root {
   --cream: #fffaf3;
   --beige: #f4efe9;
   --pink: #f3b6c6;
@@ -22,7 +22,7 @@ button.secondary {
 }
 .step.is_active {
   display: block;
-}
+} */
 /* STEP 1 */
 .store_list {
   display: grid;
@@ -30,31 +30,21 @@ button.secondary {
   gap: 24px;
   margin-top: 20px;
 }
-
 .store_card {
   position: relative;
-  height: 320px; /* 🔥 중요 */
-  box-shadow: 5px 5px 20px #fecdd35b;
+  height: 320px;
+  box-shadow: 5px 5px 20px var(--raspberry-z);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  background: #fff;
 }
-
-/* 이미지 */
 .store_img {
   width: 100%;
   height: 100%;
 }
-
 .store_img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
 }
-
-/* 매장명 */
 .store_title {
   position: absolute;
   top: 0;
@@ -66,42 +56,23 @@ button.secondary {
   background: rgba(255,255,255,0.9);
   z-index: 5;
 }
-
-/* 🔥 숨겨진 상세 정보 */
 .store_detail {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-
   background: #fff;
   padding: 16px;
   font-size: 0.875rem;
-  line-height: 1.5;
-
   transform: translateY(100%);
   transition: transform 0.35s ease;
   box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
-
   z-index: 10;
 }
-
-/* hover */
 .store_card:hover .store_detail {
   transform: translateY(0);
 }
 
-
-/* .store_card img {
-  height: 240px;
-  border-radius: 8px;
-}
-.store_card h4 {
-  font-size: 1.2rem;
-}
-.store_card p {
-  font-size: 0.8rem;
-} */
 /* STEP 2 */
 .menu_layout {
   display: grid;

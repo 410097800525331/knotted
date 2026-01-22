@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/knotted.css">
+  <link rel="stylesheet" href="/css/pickup.css">
 
   <!-- JS libraries -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -26,13 +27,17 @@
 
   <!-- custom JS -->
   <script src="/js/common.js"></script>
+  <script src="/js/location.js"></script>
 </head>
 
 
 <body>
   <div class="content user"></div>
   <div class="header"></div>
-  <section></section>
+  <section class="content step is_active" id="step1">
+    <h2>매장 안내</h2>
+    <div class="store_list" id="store_list"></div>
+  </section>
   <div class="footer"></div>
 </body>
 
