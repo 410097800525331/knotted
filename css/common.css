@@ -94,13 +94,7 @@
   border: 1px solid var(--raspberry-0);
 }
 .user a {
-  padding: 4px 16px;
-  border-radius: 14px;
-  margin-right: 8px;
-  /* border: 1px solid var(--raspberry-0); 
-  */
-  background: var(--raspberry-50);
-  color: #fff;
+  margin-right: 16px;
 }
 
 /* footer */
