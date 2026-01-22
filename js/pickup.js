@@ -1,24 +1,13 @@
 /* ======================
-   기본 데이터
+   GLOBAL STATE
 ====================== */
-const menus = [
-  { name: '얼그레이 도넛', price: 3800, category: 'donut', desc: '홍차 향 가득한 시그니처 도넛' },
-  { name: '딸기 케이크', price: 28000, category: 'cake', desc: '제철 딸기 생크림 케이크' }
-];
-
-let selectedMenus = {};
-let selectedStore = {};
-let currentCategory = 'all';
-let selectedDate = '';
-let selectedTime = '';
-let currentDetail = null;
-
-/* ======================
-   DOM
-====================== */
-const date_list = document.getElementById('date_list');
-const time_list = document.getElementById('time_list');
-const selected_datetime = document.getElementById('selected_datetime');
+const pickupState = {
+  selectedStore: null,
+  selectedMenus: {},
+  currentCategory: 'all',
+  selectedDate: '',
+  selectedTime: ''
+};
 
 /* ======================
    STEP 이동
@@ -33,119 +22,29 @@ function goStep(n) {
 ====================== */
 function selectStore(idx) {
   const store = pickupStep1_content[idx];
+  pickupState.selectedStore = store;
 
-  selectedStore = {
-    name: store.spot,
-    time: store.pickuptime
-  };
-
-  document.getElementById('store_info_box').innerHTML =
-    `<strong>${store.spot}</strong><br>픽업 가능 시간 ${store.pickuptime}`;
+  document.getElementById('store_info_box').innerHTML = `
+    <strong>${store.spot}</strong>
+    <p>${store.address}</p>
+    <p>${store.timename1} ${store.time}</p>
+    ${store.pickuptime ? `<p>${store.timename2} ${store.pickuptime}</p>` : ''}
+    ${store.lastorder ? `<p>${store.lastorder}</p>` : ''}
+  `;
 
   goStep(2);
+
+  // ⚠ 메뉴 렌더링은 pickupmenu.js의 함수
   renderMenu();
-}
-
-/* ======================
-   메뉴
-====================== */
-function filterMenu(cat, btn) {
-  currentCategory = cat;
-  document.querySelectorAll('.menu_category button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderMenu();
-}
-
-function renderMenu() {
-  const list = document.getElementById('menu_list');
-  list.innerHTML = '';
-
-  menus
-    .filter(m => currentCategory === 'all' || m.category === currentCategory)
-    .forEach(m => {
-      list.innerHTML += `
-        <div class="menu_card">
-          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
-          <h4>${m.name}</h4>
-          <p class="price">₩${m.price.toLocaleString()}</p>
-          <div class="actions">
-            <button class="secondary" onclick="openDetail('${m.name}')">상세</button>
-            <button onclick="addMenu('${m.name}',${m.price})">담기</button>
-          </div>
-        </div>
-      `;
-    });
-}
-
-function addMenu(name, price) {
-  selectedMenus[name] = selectedMenus[name] || { price, qty: 0 };
-  selectedMenus[name].qty++;
-  renderSelected();
-}
-
-function renderSelected() {
-  const list = document.getElementById('selected_list');
-  list.innerHTML = '';
-
-  let total = 0;
-  let qty = 0;
-
-  Object.keys(selectedMenus).forEach(n => {
-    const i = selectedMenus[n];
-    total += i.price * i.qty;
-    qty += i.qty;
-
-    list.innerHTML += `
-      <div class="selected_item">
-        <span>${n}</span>
-        <div class="qty">
-          <button onclick="changeQty('${n}',-1)">-</button>
-          <span>${i.qty}</span>
-          <button onclick="changeQty('${n}',1)">+</button>
-        </div>
-        <span class="remove" onclick="removeMenu('${n}')">✕</span>
-      </div>
-    `;
-  });
-
-  document.getElementById('total').innerText =
-    `총 ${qty}개 / ₩${total.toLocaleString()}`;
-}
-
-function changeQty(n, d) {
-  selectedMenus[n].qty += d;
-  if (selectedMenus[n].qty <= 0) delete selectedMenus[n];
-  renderSelected();
-}
-
-function removeMenu(n) {
-  delete selectedMenus[n];
-  renderSelected();
-}
-
-/* ======================
-   상세 모달
-====================== */
-function openDetail(name) {
-  currentDetail = menus.find(m => m.name === name);
-  detail_name.innerText = currentDetail.name;
-  detail_desc.innerText = currentDetail.desc;
-  detail_price.innerText = `₩${currentDetail.price.toLocaleString()}`;
-  detail_modal.classList.add('is_open');
-}
-
-function closeDetail() {
-  detail_modal.classList.remove('is_open');
-}
-
-function addMenuFromDetail() {
-  addMenu(currentDetail.name, currentDetail.price);
-  closeDetail();
 }
 
 /* ======================
    날짜 / 시간
 ====================== */
+const date_list = document.getElementById('date_list');
+const time_list = document.getElementById('time_list');
+const selected_datetime = document.getElementById('selected_datetime');
+
 function generateDates() {
   date_list.innerHTML = '';
   const today = new Date();
@@ -163,9 +62,7 @@ function generateDates() {
 }
 
 function generateTimes() {
-  time_list.innerHTML = '';
-
-  ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
+  ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00']
     .forEach(t => {
       const el = document.createElement('div');
       el.className = 'time_item';
@@ -178,28 +75,46 @@ function generateTimes() {
 function selectDate(v, el) {
   document.querySelectorAll('.date_item').forEach(d => d.classList.remove('active'));
   el.classList.add('active');
-  selectedDate = v;
+  pickupState.selectedDate = v;
   updateDatetime();
 }
 
 function selectTime(v, el) {
   document.querySelectorAll('.time_item').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
-  selectedTime = v;
+  pickupState.selectedTime = v;
   updateDatetime();
 }
 
 function updateDatetime() {
-  if (selectedDate && selectedTime) {
+  if (pickupState.selectedDate && pickupState.selectedTime) {
     selected_datetime.innerText =
-      `선택한 픽업: ${selectedDate} ${selectedTime}`;
+      `선택한 픽업: ${pickupState.selectedDate} ${pickupState.selectedTime}`;
+
+    document.getElementById('store_info_box').innerHTML += `
+      <div style="margin-top:8px;">
+        픽업 날짜: ${pickupState.selectedDate}<br>
+        픽업 시간: ${pickupState.selectedTime}
+      </div>
+    `;
   }
 }
 
-/* ======================
-   실행
-====================== */
+// 선택 완료 버튼
 document.addEventListener('DOMContentLoaded', () => {
   generateDates();
   generateTimes();
 });
+
+function openNoticeModal() {
+  document.getElementById('notice_modal').classList.add('is_open');
+}
+
+function closeNoticeModal() {
+  document.getElementById('notice_modal').classList.remove('is_open');
+}
+
+function goPayment() {
+  // 임시 결제 페이지
+  location.href = '/payment.html';
+}

@@ -36,8 +36,3 @@ $(document).on('click', '.store_card', function () {
   $('.store_card').removeClass('is_selected');
   $(this).addClass('is_selected');
 });
-
-function selectStore(index) {
-  const store = pickupStep1_content[index];
-  console.log('선택 매장:', store.spot);
-}
