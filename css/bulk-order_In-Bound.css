@@ -81,7 +81,6 @@ input[type="file"] {
 input[type="radio"] {
   accent-color: var(--raspberry-0);
 }
-
 .ch1 {
   position: absolute;
   pointer-events: none;

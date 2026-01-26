@@ -1,6 +1,7 @@
 @charset "utf-8";
 @import url(reset.css);
 @import url(common.css);
+@import url(user.css);
 
 .content {
   max-width: 1700px;
@@ -153,15 +154,6 @@
   bottom: 20px;
   transform: translateX(-50%);
 }
-@media (max-width: 1024px) {
-  .best_inner {
-    flex-direction: column;
-  }
-  .best_menu_text,
-  .menu_recommend_swiper_wrap {
-    width: 100%;
-  }
-}
 
 /* 인스타 */
 .insta_inner p {
@@ -171,4 +163,101 @@
 .insta_swiper .swiper-slide {
   border-radius: 16px;
   overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .main_swiper {
+    height: 600px;
+  }
+  
+  .best_inner {
+    flex-direction: column;
+  }
+  .best_menu_text,
+  .menu_recommend_swiper_wrap {
+    width: 100%;
+  }
+}
+@media (max-width: 850px) {
+  /* 공통 */
+  .content {
+    /* margin-left: 0; */
+    max-width: 100%;
+    padding: 16px 20px;
+  }
+  /* 메인 슬라이드 */
+  .main_swiper {
+    height: 480px;
+  }
+  .swiper {
+    border-radius: 20px;
+  }
+
+  /* 베스트 영역 */
+  .best_inner {
+    flex-direction: column;
+  }
+  .best_menu_text {
+    width: 100%;
+    padding: 24px 0;
+  }
+  .best_menu_list {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .best_menu_list li {
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+  .best_menu_nav {
+    position: static;
+    margin-top: 16px;
+    justify-content: flex-end;
+  }
+  .best_menu_swiper_wrap {
+    width: 100%;
+  }
+  .insta_inner {
+    text-align: center;
+  }
+}
+@media (max-width: 576px) {
+  /* 메인 슬라이드 */
+  .main_swiper {
+    height: 360px;
+  }
+  /* 티커 */
+  .ticker_inner span,
+  .ticker_inner b {
+    font-size: 0.75rem;
+  }
+  /* 베스트 타이틀 */
+  .best_menu_text h1 {
+    font-size: 1.5rem;
+  }
+  .best_menu_text p {
+    font-size: 0.875rem;
+  }
+  .best_menu_list {
+    display: none;
+  }
+  /* 버튼 */
+  .best_menu_prev,
+  .best_menu_next {
+    width: 36px;
+    height: 36px;
+  }
+  /* 카드 */
+  .best_menu_swiper img {
+    padding: 12px;
+  }
+  .swiper-slide h4 {
+    font-size: 0.4rem;
+    bottom: 4px;
+  }
+  .insta_inner p {
+    font-size: 0.875rem;
+  }
 }

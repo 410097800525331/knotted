@@ -64,6 +64,21 @@ $(document).ready(function () {
 
   $(".header").append(header);
 
+  // 모바일 메뉴 버튼
+  const mobile_btn = `
+  <button class="mobile_menu_btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+`;
+  $(".header").prepend(mobile_btn);
+
+  // 모바일 메뉴 토글
+  $(".mobile_menu_btn").on("click", function () {
+    $(".header").toggleClass("is_open");
+  });
+
   const nav_items = document.querySelectorAll(".nav_item");
   const nav_titles = document.querySelectorAll(".nav_title");
 
@@ -84,23 +99,205 @@ $(document).ready(function () {
   });
 
 
-
   const user = `
-    <input class="search" placeholder="Search" />
-    <div>
-      <a href="#">Login</a>
-      <a href="#">Join</a>
-      <a href="#">Cart</a>
-    </div>
-  `;
+  <input class="search" placeholder="Search" />
 
+  <div class="user_actions">
+    <a href="#" class="btn_open_user" data-type="login">Login</a>
+    <a href="#" class="btn_open_user" data-type="join">Join</a>
+    <a href="/knottedstore/cart.html">Cart</a>
+  </div>
+
+  <div class="user_modal">
+    <div class="modal_dim"></div>
+
+    <main class="user_wrap">
+      <section class="user_box">
+        <button class="btn_close">×</button>
+
+        <!-- ================= 로그인 ================= -->
+        <div class="user_step user_login">
+          <h3>로그인</h3>
+
+          <div class="input_group">
+            <label>이메일</label>
+            <input type="email">
+          </div>
+
+          <div class="input_group">
+            <label>비밀번호</label>
+            <input type="password">
+          </div>
+
+          <div class="btn_group">
+            <div>아이디/비밀번호 찾기</div>
+            <button class="btn_next">로그인</button>
+          </div>
+        </div>
+
+        <!-- ================= 회원가입 ================= -->
+        <div class="user_step user_join_step user_agree">
+          <button class="btn_close">×</button>
+          <div class="user_step step_agree active">
+            <h3>약관동의</h3>
+            <div class="agree_item">
+              <label><input type="checkbox" class="agree_required"> 이용약관 동의 (필수)</label>
+              <div class="agree_box">이용약관 임시 내용</div>
+            </div>
+            <div class="agree_item">
+              <label><input type="checkbox" class="agree_required"> 개인정보 수집 및 이용 동의 (필수)</label>
+              <div class="agree_box">개인정보 수집 임시 내용</div>
+            </div>
+            <div class="agree_item">
+              <label>마케팅 활용 및 광고 수신 동의</label>
+              <div class="agree_box">마케팅 약관 임시 내용</div>
+            </div>
+            <div class="agree_option">
+              <label><input type="checkbox" class="agree_optional"> 메시지(SMS, 카카오톡 등) 수신 동의</label>
+              <label><input type="checkbox" class="agree_optional"> E-Mail 수신 동의</label>
+              <label class="agree_age">
+                <input type="checkbox" class="agree_required"> 만 14세 이상입니다. (필수)
+              </label>
+            </div>
+            <label class="check_all">
+              <input type="checkbox" id="agree_all">
+              이용약관, 개인정보 수집 및 이용에 모두 동의합니다.
+            </label>
+            <div class="btn_group">
+              <button class="btn_cancel">취소</button>
+              <button class="btn_next btn_agree_next" disabled>가입하기</button>
+            </div>
+          </div>
+
+          <div class="user_step step_form">
+            <h3>본인인증</h3>
+            <button class="btn_auth">휴대폰 인증</button>
+            <button class="btn_auth">간편 인증</button>
+
+            <h3>회원정보 입력</h3>
+            <div class="input_group">
+              <label>이메일</label>
+              <input type="email">
+            </div>
+            <div class="input_group">
+              <label>비밀번호</label>
+              <input type="password">
+            </div>
+            <div class="input_group">
+              <label>비밀번호 확인</label>
+              <input type="password">
+            </div>
+            <div class="input_group">
+              <label>이름</label>
+              <input type="text">
+            </div>
+            <div class="input_group">
+              <label>성별</label>
+              <div class="radio_group">
+                <label><input type="radio" name="gender"> 남자</label>
+                <label><input type="radio" name="gender"> 여자</label>
+              </div>
+            </div>
+            <div class="input_group">
+              <label>연락처</label>
+              <input type="tel">
+            </div>
+            <div class="input_group">
+              <label>주소</label>
+              <input type="text">
+              <input type="text" placeholder="상세주소">
+            </div>
+            <div class="input_group">
+              <label>생년월일</label>
+              <input type="date">
+            </div>
+            <div class="btn_group">
+              <button class="btn_cancel">이전으로</button>
+              <button class="btn_next" disabled>가입하기</button>
+            </div>
+          </div>
+
+      </section>
+    </main>
+  </div>
+  `;
   $(".user").append(user);
   
+  document.addEventListener('click', (e) => {
+    const modal = document.querySelector('.user_modal');
+    const login = document.querySelector('.user_login');
+    const join = document.querySelector('.user_agree');
+    const agree = document.querySelector('.step_agree');
+    const form = document.querySelector('.step_form');
+
+    /* 모달 열기 */
+    if (e.target.classList.contains('btn_open_user')) {
+      modal.classList.add('active');
+
+      login.classList.remove('active');
+      join.classList.remove('active');
+      agree.classList.add('active');
+      form.classList.remove('active');
+
+      if (e.target.dataset.type === 'login') {
+        login.classList.add('active');
+      } else {
+        join.classList.add('active');
+      }
+    }
+
+    /* 로그인 → 회원가입 */
+    if (e.target.classList.contains('btn_prev')) {
+      login.classList.remove('active');
+      join.classList.add('active');
+
+      agree.classList.add('active');
+      form.classList.remove('active');
+    }
+
+    /* 약관 → 회원정보 */
+    if (e.target.classList.contains('btn_agree_next')) {
+      agree.classList.remove('active');
+      form.classList.add('active');
+    }
+
+    /* 이전으로 */
+    if (e.target.textContent === '이전으로') {
+      form.classList.remove('active');
+      agree.classList.add('active');
+    }
+
+    /* 닫기 */
+    if (
+      e.target.classList.contains('btn_close') ||
+      e.target.classList.contains('modal_dim') ||
+      e.target.classList.contains('btn_cancel')
+    ) {
+      modal.classList.remove('active');
+    }
+
+    /* 전체 동의 */
+    if (e.target.id === 'agree_all') {
+      document.querySelectorAll('.agree_required').forEach(chk => {
+        chk.checked = e.target.checked;
+      });
+      validateAgree();
+    }
+
+    if (e.target.classList.contains('agree_required')) {
+      validateAgree();
+    }
+  });
+
+  function validateAgree() {
+    const required = [...document.querySelectorAll('.agree_required')];
+    document.querySelector('.btn_agree_next').disabled =
+      !required.every(chk => chk.checked);
+  }
+
   // footer
   const footer = `
-    
     <div class="footer_inner">
-
       <!-- 정보 영역 -->
       <div class="footer_info">
         <div class="footer_col">

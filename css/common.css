@@ -13,6 +13,9 @@
   overflow-y: auto;
   z-index: 100;
 }
+.main_content {
+  margin-left: 200px;
+}
 .header img {
   width: 120px;
   margin-bottom: 60px;
@@ -58,8 +61,26 @@
   padding: 6px 0;
   font-size: 0.9rem;
 }
+.mobile_menu_btn {
+  display: none;
+  width: 32px;
+  height: 24px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.mobile_menu_btn span {
+  display: block;
+  height: 2px;
+  background: #000;
+  margin-bottom: 6px;
+}
+
 @media (max-width: 1024px) {
-  .vertical_header {
+  .header {
     width: 220px;
   }
   .main_content {
@@ -67,35 +88,62 @@
   }
 }
 @media (max-width: 768px) {
-  .vertical_header {
-    position: relative;
+  .header {
     width: 100%;
-    height: auto;
+    height: 64px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
     border-right: none;
     border-bottom: 1px solid var(--slate-0);
+    overflow: visible;
+  }
+  .header img {
+    margin-bottom: 0;
+    width: 100px;
+  }
+  nav {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 24px;
+    overflow-y: auto;
+  }
+  .header.is_open nav {
+    transform: translateX(0);
+  }
+  .nav_menu {
+    display: block;
+  }
+  .nav_item {
+    margin-bottom: 20px;
+  }
+  .nav_title {
+    font-size: 1.1rem;
+  }
+  .mobile_menu_btn {
+    display: block;
   }
   .main_content {
     margin-left: 0;
-    padding: 40px 20px;
+    padding: 88px 20px 40px;
   }
 }
-
-/* user */
-.user {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 999;
-}
-.search {
-  width: 360px;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 24px;
-  border: 1px solid var(--raspberry-0);
-}
-.user a {
-  margin-right: 16px;
+@media (max-width: 576px) {
+  .search {
+    display: none;
+  }
+  .user {
+    justify-content: flex-end;
+  }
+  .footer_inner {
+    padding: 64px 20px 220px;
+  }
 }
 
 /* footer */
