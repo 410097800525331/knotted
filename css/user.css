@@ -17,6 +17,7 @@
 .user a {
   margin-right: 32px;
 }
+.nav_user{display:none}
 
 /* 로그인/회원가입 */
 .user_step {
@@ -111,8 +112,6 @@ button {
   }
 }
 
-/* .user */
-
 /* 카트 */
 .cart_wrap {
   max-width: 1200px;
@@ -151,6 +150,24 @@ button {
 .btn_shop:hover {
   background: var(--slate-100);
   color: #fff;
+}
+@media(max-width:1024px){
+  .user{display:none}
+  .nav_user{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    padding-bottom:24px;
+    margin-bottom:24px;
+    border-bottom:1px solid var(--slate-0);
+  }
+  .nav_user .search{
+    width:100%;
+  }
+  .nav_user a{
+    margin:0;
+    font-size:1rem;
+  }
 }
 @media (max-width: 768px) {
   .cart_table_head {

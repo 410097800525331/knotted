@@ -222,6 +222,19 @@ $(document).ready(function () {
   </div>
   `;
   $(".user").append(user);
+  // 모바일용 user를 nav 안에 복제
+  const mobile_user = `
+  <div class="nav_user">
+    <input class="search" placeholder="Search" />
+    <div class="user_actions">
+      <a href="#" class="btn_open_user" data-type="login">Login</a>
+      <a href="#" class="btn_open_user" data-type="join">Join</a>
+      <a href="/knottedstore/cart.html">Cart</a>
+    </div>
+  </div>
+`;
+  $("nav").prepend(mobile_user);
+
 
   document.addEventListener('click', (e) => {
     const modal = document.querySelector('.user_modal');
@@ -232,6 +245,11 @@ $(document).ready(function () {
 
     /* 모달 열기 */
     if (e.target.classList.contains('btn_open_user')) {
+      e.preventDefault();
+
+      // 햄버거 메뉴 닫기 (이게 핵심)
+      document.querySelector('.header').classList.remove('is_open');
+
       modal.classList.add('active');
 
       login.classList.remove('active');
@@ -245,6 +263,7 @@ $(document).ready(function () {
         join.classList.add('active');
       }
     }
+
 
     /* 로그인 → 회원가입 */
     if (e.target.classList.contains('btn_prev')) {
