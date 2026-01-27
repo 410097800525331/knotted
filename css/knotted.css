@@ -194,6 +194,7 @@
 =============================== */
 @media (max-width: 850px) {
   .content {
+    margin: 0 auto;
     padding: 16px 20px;
   }
 

@@ -108,32 +108,53 @@ nav {
   transform: rotate(-45deg);
   bottom: 9px;
 }
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .mobile_menu_btn {
     display: block;
   }
 }
 
 
-@media (max-width: 1024px) {
-  .header {
-    width: 100%;
-    height: 64px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border-right: none;
-    border-bottom: 1px solid var(--mango-0);
-
-    overflow: visible;
+@media (max-width:1024px){
+  .header{
+    width:100%;
+    height:64px;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-right:none;
+    border-bottom:1px solid var(--mango-0);
+    overflow:visible;
   }
-  .main_content {
-    margin-left: 220px;
+  .header img {
+    margin-bottom: 0;
+  }
+  nav{
+    position:fixed;
+    top:64px;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:#fff;
+    transform:translateX(-100%);
+    transition:transform 0.3s ease;
+    padding:24px;
+    overflow-y:auto;
+    z-index:120;
+  }
+  .header.is_open nav{
+    transform:translateX(0);
+  }
+  .mobile_menu_btn{
+    display:block;
+  }
+  .main_content{
+    margin-left:0;
+    padding-top:88px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .header {
     width: 100%;
     height: 64px;
@@ -168,6 +189,7 @@ nav {
   }
   .nav_item {
     margin-bottom: 20px;
+    background: var(--raspberry-z);
   }
   .nav_title {
     font-size: 1.1rem;
@@ -269,5 +291,37 @@ nav {
   }
   .footer_policy_wrap {
     text-align: left;
+  }
+}
+
+/* 탑 버튼 */
+.btn_top{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--raspberry-0);
+  color:#fff;
+  font-size:20px;
+  border:none;
+  cursor:pointer;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.3s ease,transform 0.3s ease;
+  z-index:999;
+}
+.btn_top.is_show{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+@media(max-width:576px){
+  .btn_top{
+    right:16px;
+    bottom:16px;
+    width:44px;
+    height:44px;
   }
 }

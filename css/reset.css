@@ -71,7 +71,10 @@ h3 {
   background-position: left bottom;
   color: #fff;
 }
-@media (max-width: 768px) {
+@media (max-width: 850px) {
+  section {
+    margin: 0 auto;
+  }
   .btn_w {
     width: 100%;
     font-size: 1.1rem;

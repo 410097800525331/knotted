@@ -222,7 +222,7 @@ $(document).ready(function () {
   </div>
   `;
   $(".user").append(user);
-  
+
   document.addEventListener('click', (e) => {
     const modal = document.querySelector('.user_modal');
     const login = document.querySelector('.user_login');
@@ -344,4 +344,24 @@ $(document).ready(function () {
   `;
 
   $(".footer").append(footer);
+
+  const topBtn = `
+<button class="btn_top" aria-label="상단으로 이동">
+  ↑
+</button>
+`;
+  $("body").append(topBtn);
+
+  $(window).on("scroll", function () {
+    if ($(this).scrollTop() > 300) {
+      $(".btn_top").addClass("is_show");
+    } else {
+      $(".btn_top").removeClass("is_show");
+    }
+  });
+
+  $(document).on("click", ".btn_top", function () {
+    $("html, body").animate({ scrollTop: 0 }, 500);
+  });
+
 });
