@@ -58,6 +58,17 @@
             <div class="menu_list" id="menu_list"></div>
           </div>
 
+          <!-- 메뉴 상세 이미지 모달 -->
+          <div class="modal" id="detail_modal">
+            <div class="modal_dim" onclick="closeDetail()"></div>
+
+            <div class="modal_content">
+              <button class="modal_close" onclick="closeDetail()">✕</button>
+              <img id="detail_img" alt="상세 이미지">
+              <button class="primary full" onclick="addMenuFromDetail()">담기</button>
+            </div>
+          </div>
+
           <div class="selected_box">
             <button class="secondary" onclick="goStep(1)">매장 다시 선택</button>
             <div class="selected_store_box" id="store_info_box"></div>
@@ -65,46 +76,44 @@
             <div id="selected_list"></div>
             <hr>
             <p id="total"></p>
+            <!-- <button class="primary full" onclick="goStep3WithValidation()">날짜 선택하기</button> -->
+
             <button class="secondary" onclick="goStep(3)">날짜 선택하기</button>
           </div>
         </div>
       </section>
 
       <!-- STEP 3 -->
-      <section class="step step_datetime split_layout" id="step3">
-        <!-- LEFT : 날짜 -->
-        <div class="split_col left">
-          <button class="secondary back_btn" onclick="goStep(2)">← 메뉴 다시 선택</button>
-          <h2>픽업 날짜 선택</h2>
-          <div class="date_list" id="date_list"></div>
-        </div>
+      <section class="step step_datetime is_active" id="step3">
+        <div class="split_layout">
 
-        <!-- RIGHT : 시간 -->
-        <div class="split_col right">
-          <h2>픽업 시간 선택</h2>
-          <div class="time_list" id="time_list"></div>
+          <!-- LEFT : 날짜 -->
+          <div class="split_col left">
+            <button class="secondary back_btn" onclick="goStep(2)">
+              ← 메뉴 다시 선택
+            </button>
 
-          <p id="selected_datetime" class="selected_datetime"></p>
-
-          <div class="notice">
-            <p>· 픽업 당일 취소 및 환불 불가</p>
-            <p>· 픽업 시간 10분 초과 시 자동 취소</p>
+            <h2>픽업 날짜 선택</h2>
+            <div class="date_list" id="date_list"></div>
           </div>
 
-          <button class="primary full" onclick="openModal()">선택 완료</button>
+          <!-- RIGHT : 시간 -->
+          <div class="split_col right">
+            <h2>픽업 시간 선택</h2>
+            <div class="time_list" id="time_list"></div>
+
+            <p id="selected_datetime" class="selected_datetime"></p>
+
+            <div class="notice">
+              <p>· 픽업 당일 취소 및 환불 불가</p>
+              <p>· 픽업 시간 10분 초과 시 자동 취소</p>
+            </div>
+
+            <button class="primary full" onclick="completePickup()">선택 완료</button>
+          </div>
+
         </div>
       </section>
-
-      <!-- 모달 -->
-      <div class="modal" id="detail_modal">
-        <div class="modal_content">
-          <span class="modal_close" onclick="closeDetail()">✕</span>
-          <h3 id="detail_name"></h3>
-          <p id="detail_desc"></p>
-          <p id="detail_price"></p>
-          <button onclick="addMenuFromDetail()">담기</button>
-        </div>
-      </div>
   </section>
 
   <div class="modal" id="notice_modal">

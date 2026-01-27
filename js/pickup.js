@@ -3,22 +3,34 @@
 ====================== */
 const pickupState = {
   selectedStore: null,
-  selectedMenus: {},
+  selectedMenus: {},   // { menuName: { name, price, qty } }
   currentCategory: 'all',
   selectedDate: '',
   selectedTime: ''
 };
 
+
 /* ======================
    STEP 이동
 ====================== */
 function goStep(n) {
-  document.querySelectorAll('.step').forEach(s => s.classList.remove('is_active'));
-  document.getElementById('step' + n).classList.add('is_active');
+  document.querySelectorAll('.step').forEach(step => {
+    step.classList.remove('is_active');
+  });
+
+  const target = document.getElementById('step' + n);
+  if (target) target.classList.add('is_active');
+
+  // STEP 3 진입 시 날짜/시간 생성
+  if (n === 3) {
+    renderDates();
+    renderTimes();
+  }
 }
 
+
 /* ======================
-   매장 선택
+   STEP 1 : 매장 선택
 ====================== */
 function selectStore(idx) {
   const store = pickupStep1_content[idx];
@@ -34,87 +46,190 @@ function selectStore(idx) {
 
   goStep(2);
 
-  // ⚠ 메뉴 렌더링은 pickupmenu.js의 함수
+  // 메뉴 렌더링 (pickupmenu.js)
   renderMenu();
 }
 
-/* ======================
-   날짜 / 시간
-====================== */
-const date_list = document.getElementById('date_list');
-const time_list = document.getElementById('time_list');
-const selected_datetime = document.getElementById('selected_datetime');
 
-function generateDates() {
-  date_list.innerHTML = '';
-  const today = new Date();
+/* ======================
+   STEP 2 : 메뉴 담기
+====================== */
+
+/* 메뉴 담기 */
+function addMenu(name) {
+  const menu = menus.find(m => m.name === name);
+  if (!menu) return;
+
+  if (!pickupState.selectedMenus[name]) {
+    pickupState.selectedMenus[name] = {
+      name: menu.name,
+      price: menu.price,
+      qty: 1
+    };
+  } else {
+    pickupState.selectedMenus[name].qty++;
+  }
+
+  renderSelected();
+}
+
+/* 수량 변경 */
+function changeQty(name, delta) {
+  if (!pickupState.selectedMenus[name]) return;
+
+  pickupState.selectedMenus[name].qty += delta;
+
+  if (pickupState.selectedMenus[name].qty <= 0) {
+    delete pickupState.selectedMenus[name];
+  }
+
+  renderSelected();
+}
+
+/* 메뉴 제거 */
+function removeMenu(name) {
+  delete pickupState.selectedMenus[name];
+  renderSelected();
+}
+
+/* 선택 메뉴 렌더 */
+function renderSelected() {
+  const list = document.getElementById('selected_list');
+  const totalEl = document.getElementById('total');
+
+  list.innerHTML = '';
+
+  let totalQty = 0;
+  let totalPrice = 0;
+
+  Object.values(pickupState.selectedMenus).forEach(item => {
+    totalQty += item.qty;
+    totalPrice += item.qty * item.price;
+
+    list.insertAdjacentHTML('beforeend', `
+      <div class="selected_item">
+        <span>${item.name}</span>
+        <div class="qty">
+          <button onclick="changeQty('${item.name}', -1)">-</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty('${item.name}', 1)">+</button>
+        </div>
+        <span class="remove" onclick="removeMenu('${item.name}')">✕</span>
+      </div>
+    `);
+  });
+
+  totalEl.innerText = `총 ${totalQty}개 · ${totalPrice.toLocaleString()}원`;
+}
+
+
+/* STEP 2 → STEP 3 이동 (검증) */
+function goStep3WithValidation() {
+  const count = Object.keys(pickupState.selectedMenus).length;
+
+  if (count === 0) {
+    alert('메뉴를 한 개 이상 선택해주세요.');
+    return;
+  }
+
+  goStep(3);
+}
+
+
+/* ======================
+   STEP 3 : 날짜 / 시간 선택
+====================== */
+
+/* 날짜 생성 (오늘부터 7일) */
+function renderDates() {
+  const dateList = document.getElementById('date_list');
+  dateList.innerHTML = '';
 
   for (let i = 0; i < 7; i++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() + i);
+    const d = new Date();
+    d.setDate(d.getDate() + i);
 
-    const el = document.createElement('div');
-    el.className = 'date_item';
-    el.innerText = `${d.getMonth() + 1}/${d.getDate()}`;
-    el.onclick = () => selectDate(el.innerText, el);
-    date_list.appendChild(el);
+    const label = `${d.getMonth() + 1}/${d.getDate()}`;
+    const value = d.toISOString().split('T')[0];
+
+    const btn = document.createElement('button');
+    btn.className = 'date_btn';
+    btn.innerText = label;
+    btn.onclick = () => selectDate(value, btn);
+
+    dateList.appendChild(btn);
   }
 }
 
-function generateTimes() {
-  ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00']
-    .forEach(t => {
-      const el = document.createElement('div');
-      el.className = 'time_item';
-      el.innerText = t;
-      el.onclick = () => selectTime(t, el);
-      time_list.appendChild(el);
-    });
+/* 시간 생성 */
+function renderTimes() {
+  const timeList = document.getElementById('time_list');
+  timeList.innerHTML = '';
+
+  const times = [
+    '10:00','10:30','11:00','11:30',
+    '12:00','12:30','13:00','13:30',
+    '14:00','14:30','15:00','15:30',
+    '16:00','16:30','17:00'
+  ];
+
+  times.forEach(time => {
+    const btn = document.createElement('button');
+    btn.className = 'time_btn';
+    btn.innerText = time;
+    btn.onclick = () => selectTime(time, btn);
+    timeList.appendChild(btn);
+  });
 }
 
-function selectDate(v, el) {
-  document.querySelectorAll('.date_item').forEach(d => d.classList.remove('active'));
-  el.classList.add('active');
-  pickupState.selectedDate = v;
-  updateDatetime();
+/* 날짜 선택 */
+function selectDate(value, btn) {
+  pickupState.selectedDate = value;
+  document.querySelectorAll('.date_btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateSelectedText();
 }
 
-function selectTime(v, el) {
-  document.querySelectorAll('.time_item').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  pickupState.selectedTime = v;
-  updateDatetime();
+/* 시간 선택 */
+function selectTime(value, btn) {
+  pickupState.selectedTime = value;
+  document.querySelectorAll('.time_btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateSelectedText();
 }
 
-function updateDatetime() {
+/* 선택 문구 */
+function updateSelectedText() {
+  const el = document.getElementById('selected_datetime');
+
   if (pickupState.selectedDate && pickupState.selectedTime) {
-    selected_datetime.innerText =
-      `선택한 픽업: ${pickupState.selectedDate} ${pickupState.selectedTime}`;
-
-    document.getElementById('store_info_box').innerHTML += `
-      <div style="margin-top:8px;">
-        픽업 날짜: ${pickupState.selectedDate}<br>
-        픽업 시간: ${pickupState.selectedTime}
-      </div>
-    `;
+    el.innerText =
+      `선택한 픽업 시간 : ${pickupState.selectedDate} ${pickupState.selectedTime}`;
   }
 }
 
-// 선택 완료 버튼
-document.addEventListener('DOMContentLoaded', () => {
-  generateDates();
-  generateTimes();
-});
 
+/* ======================
+   선택 완료
+====================== */
+function completePickup() {
+  if (!pickupState.selectedDate || !pickupState.selectedTime) {
+    alert('픽업 날짜와 시간을 선택해주세요.');
+    return;
+  }
+
+  // 완료 후 메인 페이지 이동
+  location.href = '/index.html';
+}
+
+
+/* ======================
+   안내 모달
+====================== */
 function openNoticeModal() {
   document.getElementById('notice_modal').classList.add('is_open');
 }
 
 function closeNoticeModal() {
   document.getElementById('notice_modal').classList.remove('is_open');
-}
-
-function goPayment() {
-  // 임시 결제 페이지
-  location.href = '/payment.html';
 }

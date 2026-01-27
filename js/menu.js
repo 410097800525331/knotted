@@ -52,13 +52,15 @@ document.addEventListener("DOMContentLoaded", () => {
       menuGrid.insertAdjacentHTML(
         "beforeend",
         `
-        <div class="menu_card">
-          <img src="/assets/images/${item.image}.png" alt="${item.name}">
-          <h4>${item.name}</h4>
-        </div>
-        `
+    <div class="menu_card"
+      data-info="/assets/images/${item.image}-info.png">
+      <img src="/assets/images/${item.image}.png" alt="${item.name}">
+      <h4>${item.name}</h4>
+    </div>
+    `
       );
     });
+
   }
 
   /* 탭 클릭 */
@@ -110,4 +112,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* 최초 전체 */
   renderMenu("all");
+
+  const imageModal = document.getElementById("image_modal");
+  const modalImg = document.getElementById("image_modal_img");
+  const modalClose = document.querySelector(".image_close");
+  const modalDim = document.querySelector(".image_dim");
+
+  document.addEventListener("click", (e) => {
+    const card = e.target.closest(".menu_card");
+    if (!card) return;
+
+    const infoImage = card.dataset.info;
+    if (!infoImage) return;
+
+    modalImg.src = infoImage;
+    modalImg.alt = card.querySelector("h4")?.innerText || "";
+
+    imageModal.classList.add("is_open");
+    document.body.style.overflow = "hidden";
+  });
+
+  function closeImageModal() {
+    imageModal.classList.remove("is_open");
+    modalImg.src = "";
+    document.body.style.overflow = "";
+  }
+
+  modalClose.addEventListener("click", closeImageModal);
+  modalDim.addEventListener("click", closeImageModal);
+
+
 });

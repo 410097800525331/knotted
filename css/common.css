@@ -13,6 +13,12 @@
   overflow-y: auto;
   z-index: 100;
 }
+nav {
+  z-index: 150;
+}
+.header.is_open nav {
+  transform: translateX(0);
+}
 .main_content {
   margin-left: 200px;
 }
@@ -61,27 +67,67 @@
   padding: 6px 0;
   font-size: 0.9rem;
 }
+/* mobile menu button */
 .mobile_menu_btn {
   display: none;
-  width: 32px;
-  height: 24px;
-  position: absolute;
-  top: 24px;
-  right: 24px;
+  position: relative;
+  width: 28px;
+  height: 20px;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 200;
 }
 .mobile_menu_btn span {
-  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
   height: 2px;
-  background: #000;
-  margin-bottom: 6px;
+  background: var(--raspberry-50);
+  transition: all 0.3s ease;
 }
+.mobile_menu_btn span:nth-child(1) {
+  top: 0;
+}
+.mobile_menu_btn span:nth-child(2) {
+  top: 9px;
+}
+.mobile_menu_btn span:nth-child(3) {
+  bottom: 0;
+}
+
+/* open 상태 */
+.header.is_open .mobile_menu_btn span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.header.is_open .mobile_menu_btn span:nth-child(2) {
+  opacity: 0;
+}
+.header.is_open .mobile_menu_btn span:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: 9px;
+}
+@media (max-width: 768px) {
+  .mobile_menu_btn {
+    display: block;
+  }
+}
+
 
 @media (max-width: 1024px) {
   .header {
-    width: 220px;
+    width: 100%;
+    height: 64px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-right: none;
+    border-bottom: 1px solid var(--mango-0);
+
+    overflow: visible;
   }
   .main_content {
     margin-left: 220px;
@@ -220,7 +266,6 @@
   }
   .footer_info {
     grid-template-columns: 1fr;
-    gap: 40px;
   }
   .footer_policy_wrap {
     text-align: left;

@@ -76,31 +76,32 @@ function renderSelected() {
     `총 ${totalQty}개 · ${totalPrice.toLocaleString()}원`;
 }
 
-// 임시 상세 모달
+// 상세 모달용 상태
 let currentDetailMenu = null;
 
 function openDetail(name) {
   const menu = menus.find(m => m.name === name);
   currentDetailMenu = menu;
 
-  document.getElementById('detail_name').innerText = menu.name;
-  document.getElementById('detail_desc').innerText =
-    '상세 설명은 추후 제공 예정입니다.';
-  document.getElementById('detail_price').innerText =
-    menu.price.toLocaleString() + '원';
+  const imgEl = document.getElementById('detail_img');
+  imgEl.src = `/assets/images/${menu.img}-info.png`;
+  imgEl.alt = menu.name;
 
-  document.getElementById('detail_modal').classList.add('is_open');
+  document
+    .getElementById('detail_modal')
+    .classList.add('is_open');
 }
 
 function closeDetail() {
-  document.getElementById('detail_modal').classList.remove('is_open');
+  document
+    .getElementById('detail_modal')
+    .classList.remove('is_open');
 }
 
 function addMenuFromDetail() {
   addMenu(currentDetailMenu.name);
   closeDetail();
 }
-
 
 /* =========================
   메뉴 담기
@@ -162,4 +163,10 @@ function renderMenu() {
     `;
     list.insertAdjacentHTML('beforeend', html);
   });
+}
+
+function closeDetail() {
+  document
+    .getElementById('detail_modal')
+    .classList.remove('is_open');
 }
